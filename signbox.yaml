@@ -153,9 +153,7 @@ paths:
         - in: formData
           name: url_out
           type: string
-          description: "<HTML>
-          <a href="#section/Configuration/Url-out">Url out configuration</a>
-          </HTML>"
+          description: "<a href="#section/Configuration/Url-out">Url out configuration</a>"
           required: true
         - in: formData
           name: urlback
