@@ -6,7 +6,7 @@ info:
       url: https://i.ibb.co/5BgF3fR/logo-signbox-redoc.png
       altText: Signbox logo
   description:
-    $ref: ./signbox_guide.md
+    $ref: ./signbox_gui.md
 
 host: signbox.developers.uanataca.com
 schemes: 
