@@ -153,12 +153,12 @@ paths:
         - in: formData
           name: url_out
           type: string
-          description: Url where to send the signed file. See sample code in <HTML><a href="#section/Configuration/Url-out">Url out configuration</a></HTML>
+          description: "Url where to send the signed file. See sample code in <HTML><a href="#section/Configuration/Url-out">Url out configuration</a></HTML>""
           required: true
         - in: formData
           name: urlback
           type: string
-          description: Url where to send signing process log. See sample code in <HTML><a href="#section/Configuration/Url-back">Url back configuration</a></HTML>
+          description: "Url where to send signing process log. See sample code in <HTML><a href="#section/Configuration/Url-back">Url back configuration</a></HTML>""
           required: true
         - in: formData
           name: env
@@ -215,7 +215,7 @@ paths:
         - in: formData
           name: img_bookmark
           type: string
-          description: "Signature image alias name.\n\n
+          description: "Signature image alias name.<br></br>
                         It is required to previous create an image template. See <HTML><a href="#section/Configuration/Signature-Image-Configuration">Image Configuration</a></HTML>"
         - in: formData
           name: reason
@@ -411,8 +411,8 @@ paths:
       summary: JOB
       tags:
         - API Reference
-      description: "Gets the state of a signature request by its job id.<br></br>
-                    ⚠ **This method is only used for testing purpose. In a production environment is required to use urlback service**"
+      description: "Gets the state of a signature request by its job id.<br>
+                    ⚠ **This method is only used for testing purpose. In a production environment is required to use `urlback` service**"
       produces:
         - text/plain
       parameters:
@@ -502,9 +502,9 @@ paths:
       summary: RESULT
       tags:
         - API Reference
-      description: "Returns the signed file of a signature request by its job id.\n
-                    ⚠ **This method is only used for testing purpose. In a production environment is required to use url_out service**\n
-                    The signed file is only available if url_out is not specified in **sign** call"
+      description: "Returns the signed file of a signature request by its job id.</br>
+                    ⚠ **This method is only used for testing purpose. In a production environment is required to use `url_out` service**</br>
+                    The signed file is only available if `url_out` is not specified in **sign** call"
       produces:
         - application/pdf
       parameters:
