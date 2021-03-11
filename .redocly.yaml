@@ -1,6 +1,7 @@
 apiDefinitions:
   main: signbox.yaml
 referenceDocs:
+  htmlTemplate: ./signbox_tpl.html
   hideDownloadButton: true
   showConsole: false
   scrollYOffset: main-header # Esto baja el panel verical izquierdo justo debajo del header
