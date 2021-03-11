@@ -6,7 +6,7 @@ info:
       url: https://i.ibb.co/5BgF3fR/logo-signbox-redoc.png
       altText: Signbox logo
   description:
-    $ref: ./Signbox_guide.md
+    $ref: ./signbox_gui.md
 
 host: signbox.developers.uanataca.com
 schemes: 
@@ -21,19 +21,19 @@ tags:
       <th>Method</th><th>Endpoint</th><th>Action</th>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1echo/get' style='color:#E20D1B;'>/api/echo</a></td><td>Checks service availability</td>
+      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1echo/get' style='color:#E20D1B;'>/api/echo</a></td><td>Replies back what receives.</td>
     </tr>
     <tr>
-      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1sign/post' style='color:#E20D1B;'>/api/sign</a></td><td>Signs a local or a remote hosted file</td>
+      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1sign/post' style='color:#E20D1B;'>/api/sign</a></td><td>Signs a local or a remote hosted file.</td>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1job~1{id}/get' style='color:#E20D1B;'>/api/job/{id}</a></td><td>Gets the state of a job</td>
+      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1job~1{id}/get' style='color:#E20D1B;'>/api/job/{id}</a></td><td>Gets the state of a job by its id.</td>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1result~1{id}/get' style='color:#E20D1B;'>/api/result/{id}</a></td><td>Gets the signed file</td>
+      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1result~1{id}/get' style='color:#E20D1B;'>/api/result/{id}</a></td><td>Gets the result of a job</td>
     </tr>
     <tr>
-      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1generate_otp/post' style='color:#E20D1B;'>/api/generate_otp</a></td><td>Send an otp code by sms to the signer</td>
+      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1generate_otp/post' style='color:#E20D1B;'>/api/generate_otp</a></td><td>Gets the result of a job</td>
     </tr>
   </table> 
   </br> 
@@ -45,7 +45,7 @@ paths:
       summary: ECHO
       tags:
         - API Reference
-      description: Replies back what it receives to check the service availability.
+      description: Replies back what it receives.
       produces:
         - text/plain
       parameters:
@@ -56,13 +56,13 @@ paths:
           required: true
       responses:
         200:
-          description: Successful response
+          description: The sign request was executed
           schema:
             type: object
             properties:
               message:
                 type: string
-                description: "The message set as a query parameter"
+                description: "The message set as a query parameter. Example: **HelloWorld**"
           examples:
             text/plain:
               "HelloWorld"
@@ -142,39 +142,38 @@ paths:
         - in: formData
           name: file_in
           type: file
-          description: "Local path of the file to be signed.\n
-                        - **File type in base64 is not accpeted**\n
-                        - If this parameter is specified, **leave `url_in` blank**"
+          description: "The location of the document for signing. *Please read:*\n
+                        - **USE ONLY FILE TYPE (not binary or base64 strings)**\n
+                        - If this parameter is specified, **leave `url_in` blank!!!**"
         - in: formData
           name: url_in
           type: string
-          description: "Url where to get the document to be signed.\n
-                        - If this parameter is specified, **leave `file_in` blank**"     
+          description: "Url where to find the document to sign. *Please read:* \n
+                        - If this parameter is specified, **leave `file_in` blank!!!**"     
         - in: formData
           name: url_out
           type: string
-          description: Url where to send the signed file. See sample code in <HTML><a href="#section/Configuration/Url-out">Url out configuration</a></HTML>
-          required: true
+          description: "Url where to send the signed document for downloading. *Please read:* \n
+                        - If this parameter is specified, **the RESULT call MUST NOT be executed!!!**"
         - in: formData
           name: urlback
           type: string
-          description: Url where to send signing process log. See sample code in <HTML><a href="#section/Configuration/Url-back">Url back configuration</a></HTML>
-          required: true
+          description: "Url where to send signing process report"
         - in: formData
           name: env
           type: string
-          enum: [prod, test]
-          description: Reference environment for testing or production
+          enum: [prod, test, sac]
+          description: Reference environment
           required: true
         - in: formData
           name: format
           type: string
-          enum: [pades, xades, cades]
-          default: pades
+          enum: [pades, cades, xades]
           description: "Types of supported files: \n
                         - **pades** for PDF files \n
                         - **xades** for XML files \n
                         - **cades** for other files"
+          required: true
         - in: formData
           name: username
           type: string
@@ -188,20 +187,19 @@ paths:
         - in: formData
           name: pin
           type: string
-          description: Digital identity PIN
+          description: Digital identity pin
           required: true
         - in: formData
           name: level
           type: string
-          default: BES
           description: "Specify the level of the signature. The allowed values are: \n
-                        - `BES`, `T`, `LTV` for pades\n
-                        - `BES`, `T`, `EPES`, `XL` for xades\n
-                        - `BES`, `T`, `EPES` for cades"
+                        - BES, T, LTV for pades \n
+                        - BES, T, EPES for cades \n
+                        - BES, T, EPES, XL for xades"
         - in: formData
           name: tsa_bookmark
           type: string
-          description: Timestamp service alias name. This field is required for signatures with levels T, LTV or XL
+          description: Signature image alias name
         - in: formData
           name: billing_username
           type: string
@@ -215,22 +213,20 @@ paths:
         - in: formData
           name: img_bookmark
           type: string
-          description: "Signature image alias name.\n\n
-                        It is required to previous create an image template. See <HTML><a href="#section/Configuration/Signature-Image-Configuration">Image Configuration</a></HTML>"
+          description: Timestamp signature alias name
         - in: formData
           name: reason
           type: string
-          description: Reason about the signature
+          description: Comments about the signature
         - in: formData
           name: location
           type: string
-          description: Geographic location about the signature
+          description: Assigned location for the signature
         - in: formData
           name: npage
           type: string
-          default: 0
-          description: "Page number where the image signature is placed.\n
-                        - It is required an `img_bookmark` alias"
+          description: "Page number where the signature image is placed. Please read: \n
+                        - If this parameter is not specified, the first page is selected by default (0)"
         - in: formData
           name: otp
           type: string
@@ -243,7 +239,7 @@ paths:
             properties:
               id:
                 type: string
-                description: "The signature job id"
+                description: "The job Id. **This does not necessarily mean the signature was successfully applied!!**"
           examples:
             text/plain:
               "id=14.1"
@@ -253,18 +249,18 @@ paths:
                   curl -i -X POST \
                     'https://signbox.developers.uanataca.com/api/sign' \
                     -H 'Content-Type: multipart/form-data' \
-                    -F file_in=@sample_folder/document.pdf \
-                    -F url_in=http://example.com/document.pdf \
-                    -F url_out=https://example.com/result \
-                    -F urlback=https://example.com/log \
+                    -F file_in=@Sample_folder/Originals/original_doc.pdf \
+                    -F url_in=http://uanataca.samplepage.com/original_doc.pdf \
+                    -F url_out=https://uanataca.samplepage.com/signed_doc.pdf \
+                    -F urlback=https://uanataca.samplepage.com/report.pdf \
                     -F env=test \
                     -F format=pades \
-                    -F username=1122338 \
+                    -F username=5053759 \
                     -F password=7T8xdGBN \
-                    -F pin=w98nZZDR \
+                    -F pin=belorado74 \
                     -F level=T \
                     -F tsa_bookmark=uanataca \
-                    -F billing_username=billing_user@domain \
+                    -F billing_username=billing_user@uanataca.com \
                     -F billing_password=z5qNqkfB \
                     -F img_bookmark=uanataca \
                     -F 'reason=Signature test' \
@@ -274,18 +270,18 @@ paths:
         - lang: 'Javascript'
           source: |
                   var formdata = new FormData();
-                  formdata.append("file_in", fileInput.files[0], "sample_folder/document.pdf");
-                  formdata.append("url_in", "http://example.com/document.pdf");
-                  formdata.append("url_out", "https://example.com/result");
-                  formdata.append("urlback", "https://example.com/log");
+                  formdata.append("file_in", fileInput.files[0], "Sample_folder/Originals/original_doc.pdf");
+                  formdata.append("url_in", "http://uanataca.samplepage.com/original_doc.pdf");
+                  formdata.append("url_out", "https://uanataca.samplepage.com/signed_doc.pdf");
+                  formdata.append("urlback", "https://uanataca.samplepage.com/report.pdf");
                   formdata.append("env", "test");
                   formdata.append("format", "pades");
-                  formdata.append("username", "1122338");
+                  formdata.append("username", "5053759");
                   formdata.append("password", "7T8xdGBN");
-                  formdata.append("pin", "w98nZZDR");
+                  formdata.append("pin", "belorado74");
                   formdata.append("level", "T");
                   formdata.append("tsa_bookmark", "uanataca");
-                  formdata.append("billing_username", "billing_user@domain");
+                  formdata.append("billing_username", "billing_user@uanataca.com");
                   formdata.append("billing_password", "z5qNqkfB");
                   formdata.append("img_bookmark", "uanataca");
                   formdata.append("reason", "Signature test");
@@ -310,17 +306,17 @@ paths:
 
                   url = "https://signbox.developers.uanataca.com/api/sign"
 
-                  payload={'url_in': 'http://example.com/document.pdf',
-                  'url_out': 'https://example.com/result',
-                  'urlback': 'https://example.com/log',
+                  payload={'url_in': 'http://uanataca.samplepage.com/original_doc.pdf',
+                  'url_out': 'https://uanataca.samplepage.com/signed_doc.pdf',
+                  'urlback': 'https://uanataca.samplepage.com/report.pdf',
                   'env': 'test',
                   'format': 'pades',
-                  'username': '1122338',
+                  'username': '5053759',
                   'password': '7T8xdGBN',
-                  'pin': 'w98nZZDR',
+                  'pin': 'belorado74',
                   'level': 'T',
                   'tsa_bookmark': 'uanataca',
-                  'billing_username': 'billing_user@domain',
+                  'billing_username': 'billing_user@uanataca.com',
                   'billing_password': 'z5qNqkfB',
                   'img_bookmark': 'uanataca',
                   'reason': 'Signature test',
@@ -328,7 +324,7 @@ paths:
                   'npage': '2',
                   'otp': '123123'}
                   files=[
-                    ('file_in',('Doc1.pdf',open('sample_folder/document.pdf','rb'),'application/pdf'))
+                    ('file_in',('Doc1.pdf',open('Sample_folder/Originals/original_doc.pdf','rb'),'application/pdf'))
                   ]
                   
                   headers = {"Content-Type": "multipart/form-data"}
@@ -343,18 +339,18 @@ paths:
                   const fetch = require('node-fetch');
                   const formData = new FormData();
 
-                  formData.append('file_in', fs.createReadStream('sample_folder/document.pdf'));
-                  formData.append('url_in', 'http://example.com/document.pdf');
-                  formData.append('url_out', 'https://example.com/result');
-                  formData.append('urlback', 'https://example.com/log');
+                  formData.append('file_in', fs.createReadStream('Sample_folder/Originals/original_doc.pdf'));
+                  formData.append('url_in', 'http://uanataca.samplepage.com/original_doc.pdf');
+                  formData.append('url_out', 'https://uanataca.samplepage.com/signed_doc.pdf');
+                  formData.append('urlback', 'https://uanataca.samplepage.com/report.pdf');
                   formData.append('env', 'test');
                   formData.append('format', 'pades');
-                  formData.append('username', '1122338');
+                  formData.append('username', '5053759');
                   formData.append('password', '7T8xdGBN');
-                  formData.append('pin', 'w98nZZDR');
+                  formData.append('pin', 'belorado74');
                   formData.append('level', 'T');
                   formData.append('tsa_bookmark', 'uanataca');
-                  formData.append('billing_username', 'billing_user@domain');
+                  formData.append('billing_username', 'billing_user@uanataca.com');
                   formData.append('billing_password', 'z5qNqkfB');
                   formData.append('img_bookmark', 'uanataca');
                   formData.append('reason', 'Signature test');
@@ -384,18 +380,18 @@ paths:
                   client.Timeout = -1;
                   var request = new RestRequest(Method.POST);
                   request.AddHeader("content-type", "multipart/form-data; boundary=----011000010111000001101001");
-                  request.AddFile("file_in", "sample_folder/document.pdf");
+                  request.AddFile("file_in", "Sample_folder/Originals/original_doc.pdf");
                   request.AddParameter("url_in", "http://uanataca.samplepage.com/original.pdf");
                   request.AddParameter("url_out", "https://uanataca.samplepage.com/signed.pdf");
-                  request.AddParameter("urlback", "https://example.com/log");
+                  request.AddParameter("urlback", "https://uanataca.samplepage.com/report.pdf");
                   request.AddParameter("env", "test");
                   request.AddParameter("format", "pades");
-                  request.AddParameter("username", "1122338");
+                  request.AddParameter("username", "5053759");
                   request.AddParameter("password", "7T8xdGBN");
-                  request.AddParameter("pin", "w98nZZDR");
+                  request.AddParameter("pin", "belorado74");
                   request.AddParameter("level", "T");
                   request.AddParameter("tsa_bookmark", "uanataca");
-                  request.AddParameter("billing_username", "billing_user@domain");
+                  request.AddParameter("billing_username", "billing_user@uanataca.com");
                   request.AddParameter("billing_password", "z5qNqkfB");
                   request.AddParameter("img_bookmark", "uanataca");
                   request.AddParameter("reason", "Signature test");
@@ -411,15 +407,14 @@ paths:
       summary: JOB
       tags:
         - API Reference
-      description: "Gets the state of a signature request by its job id.\n
-                    ⚠ **This method is only used for testing purpose. In a production environment is required to use urlback service**"
+      description: Gets the state of a job by its id.
       produces:
         - text/plain
       parameters:
       - in: path
         name: id
         type: string 
-        description: "The job id got in a **sign** response"
+        description: "The job id generated in the **sign** call"
         required: true
       responses:
         200:
@@ -437,7 +432,7 @@ paths:
                 default: sign
               detail:
                 type: string
-                description: "The description for a failed process"
+                description: "The status message"
           examples:
             text/plain:
               "state=done&type=sign"  
@@ -502,16 +497,13 @@ paths:
       summary: RESULT
       tags:
         - API Reference
-      description: "Returns the signed file of a signature request by its job id.\n
-                    ⚠ **This method is only used for testing purpose. In a production environment is required to use url_out service**\n
-                    The signed file is only available if url_out is not specified in **sign** call"
+      description: Returns the result of a job.
       produces:
         - application/pdf
       parameters:
       - in: path
         name: id
         type: string 
-        description: "The job id got in a **sign** response"        
         required: true
       responses:
         200:
@@ -594,8 +586,7 @@ paths:
       summary: OTP
       tags:
         - API Reference
-      description: Generates an otp for the specified digital identity.\n
-                    ⚠ **This method is required and it's only available for specific digital identities"
+      description: Generates a new otp for the specified remote identity.
       produces:
         - text/plain
       consumes:
@@ -613,14 +604,14 @@ paths:
         required: true
       - in: formData
         name: uses
-        description: Amount of uses for the generated otp
+        description: Number of uses for the generated otp
         type: number
         required: true
       - in: formData
         name: env
-        description: Reference environment for testing or production
+        description: The reference environment
         type: string
-        enum: [prod, test]     
+        enum: [prod, test, sac]     
         required: true
       responses:
         200:
@@ -636,14 +627,14 @@ paths:
                     -H 'Content-Type: multipart/form-data' \
                     -F env=prod \
                     -F password=7T8xdGBN \
-                    -F username=1122338 \
+                    -F username=5053759 \
                     -F uses=10
         - lang: 'JavaScript'
           source: |
                   const form = new FormData();
                   form.append("env", "prod");
-                  form.append("username", "1122338");
                   form.append("password", "7T8xdGBN");
+                  form.append("username", "5053759");
                   form.append("uses", "10");
 
                   const resp = await fetch(
@@ -663,8 +654,8 @@ paths:
 
                   url = "https://signbox.developers.uanataca.com/api/generate_otp"
 
-                  payload={'username': '1122338',
-                  'password': '7T8xdGBN'}
+                  payload={'username': '5053210',
+                  'password': '6rNA6kMw'}
                   files=[
 
                   ]
@@ -682,8 +673,8 @@ paths:
 
                   const form = new FormData();
                   form.append('env','prod');
-                  form.append('username','1122338');
                   form.append('password','7T8xdGBN');
+                  form.append('username','5053759');
                   form.append('uses','10');
 
                   const resp = await fetch(
@@ -712,8 +703,8 @@ paths:
 
                         MultipartFormDataContent postData = new MultipartFormDataContent();
                         postData.Add(new StringContent("prod"), "env");
-                        postData.Add(new StringContent("1122338"), "username");
                         postData.Add(new StringContent("7T8xdGBN"), "password");
+                        postData.Add(new StringContent("5053759"), "username");
                         postData.Add(new StringContent("10"), "uses");
                         var request = await client.PostAsync("https://signbox.developers.uanataca.com/api/generate_otp", postData);
                         var response = await request.Content.ReadAsStringAsync();
