@@ -153,12 +153,14 @@ paths:
         - in: formData
           name: url_out
           type: string
-          description: "Url where to send the signed file. See sample code in <HTML><a href="#section/Configuration/Url-out">Url out configuration</a></HTML>""
+          description: "<HTML>
+          <a href="#section/Configuration/Url-out">Url out configuration</a>
+          </HTML>"
           required: true
         - in: formData
           name: urlback
           type: string
-          description: "Url where to send signing process log. See sample code in <HTML><a href="#section/Configuration/Url-back">Url back configuration</a></HTML>""
+          description: "Url where to send signing process log. See sample code in <a href="#section/Configuration/Url-back">Url back configuration</a>"
           required: true
         - in: formData
           name: env
@@ -215,7 +217,7 @@ paths:
         - in: formData
           name: img_bookmark
           type: string
-          description: "Signature image alias name.<br></br>
+          description: "Signature image alias name.<br>
                         It is required to previous create an image template. See <HTML><a href="#section/Configuration/Signature-Image-Configuration">Image Configuration</a></HTML>"
         - in: formData
           name: reason
@@ -412,7 +414,7 @@ paths:
       tags:
         - API Reference
       description: "Gets the state of a signature request by its job id.<br>
-                    ⚠ **This method is only used for testing purpose. In a production environment is required to use `urlback` service**"
+                    ⚠ **This method is only used for testing purpose. In a production environment is required to use `urlback` service.**"
       produces:
         - text/plain
       parameters:
