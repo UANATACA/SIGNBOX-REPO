@@ -53,7 +53,10 @@ referenceDocs:
       rightPanelHeading:
         fontFamily: 'Lato'
       fieldName:
-        fontFamily: 'Lato'    
+        fontFamily: 'Lato'
+      links:
+        color: '#E20D1B'
+        hover: '#FF0D1B'
       tokens:
         string:
           color: '#A0FBAB' # Para todo lo que esté encerrado en comillas simples o dobles
