@@ -56,7 +56,7 @@ referenceDocs:
         fontFamily: 'Lato'
       links:
         color: '#E20D1B'
-        hover: '#00FF00'
+        hover: '#9E060F'
       tokens:
         string:
           color: '#A0FBAB' # Para todo lo que esté encerrado en comillas simples o dobles
