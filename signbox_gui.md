@@ -12,7 +12,7 @@ For environments demanding high performance SignBox can be coupled with a pool o
 Signature keys are stored remotely at Uanataca Trusted Service Center.
 </div>
 
-![img](https://web.uanataca.com/common/project/images/certificado-cloud.png)
+![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/signbox_wkf.png)
 
 
 # Configuration
