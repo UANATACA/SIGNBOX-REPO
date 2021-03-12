@@ -21,19 +21,19 @@ tags:
       <th>Method</th><th>Endpoint</th><th>Action</th>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1echo/get' style='color:#E20D1B;'>/api/echo</a></td><td>Checks service availability</td>
+      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1echo/get'>/api/echo</a></td><td>Checks service availability</td>
     </tr>
     <tr>
-      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1sign/post' style='color:#E20D1B;'>/api/sign</a></td><td>Signs a local or a remote hosted file</td>
+      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1sign/post'>/api/sign</a></td><td>Signs a local or a remote hosted file</td>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1job~1{id}/get' style='color:#E20D1B;'>/api/job/{id}</a></td><td>Gets the state of a job</td>
+      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1job~1{id}/get'>/api/job/{id}</a></td><td>Gets the state of a job</td>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1result~1{id}/get' style='color:#E20D1B;'>/api/result/{id}</a></td><td>Gets the signed file</td>
+      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1result~1{id}/get'>/api/result/{id}</a></td><td>Gets the signed file</td>
     </tr>
     <tr>
-      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1generate_otp/post' style='color:#E20D1B;'>/api/generate_otp</a></td><td>Send an otp code by sms to the signer</td>
+      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1generate_otp/post'>/api/generate_otp</a></td><td>Send an otp code by sms to the signer</td>
     </tr>
   </table> 
   </br> 
