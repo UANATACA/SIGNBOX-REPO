@@ -153,12 +153,12 @@ paths:
         - in: formData
           name: url_out
           type: string
-          description: "<a href="#section/Configuration/Url-out">Url out configuration</a>"
+          description: "<a href='#section/Configuration/Url-out'>Url out configuration</a>"
           required: true
         - in: formData
           name: urlback
           type: string
-          description: "Url where to send signing process log. See sample code in <a href="#section/Configuration/Url-back">Url back configuration</a>"
+          description: "Url where to send signing process log. See sample code in <a href='#section/Configuration/Url-back'>Url back configuration</a>"
           required: true
         - in: formData
           name: env
@@ -216,7 +216,7 @@ paths:
           name: img_bookmark
           type: string
           description: "Signature image alias name.<br>
-                        It is required to previous create an image template. See <HTML><a href="#section/Configuration/Signature-Image-Configuration">Image Configuration</a></HTML>"
+                        It is required to previous create an image template. See <HTML><a href='#section/Configuration/Signature-Image-Configuration'>Image Configuration</a></HTML>"
         - in: formData
           name: reason
           type: string
