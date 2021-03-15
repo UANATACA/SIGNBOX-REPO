@@ -595,8 +595,8 @@ paths:
       summary: OTP
       tags:
         - API Reference
-      description: Generates an otp for the specified digital identity.</br>
-                    ⚠ **This method is only required and available for specific digital identities"
+      description: "Generates an otp for the specified digital identity.</br>
+                    <html><blockquote style='background-color:#faf3ac; border-color:#DFDFDF; color:#3b3b3b;'><b>⚠This method is only required and available for specific digital identities</b></blockquote></html>"
       produces:
         - text/plain
       consumes:
