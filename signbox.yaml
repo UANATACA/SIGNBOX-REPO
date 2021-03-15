@@ -504,7 +504,7 @@ paths:
       tags:
         - API Reference
       description: "Returns the signed file of a signature request by its job id.</br>
-                    <html><blockquote style='background-color:#faf3ac; border-color:#DFDFDF; color:#3b3b3b;'><b>⚠This method is only used for testing purpose. In a production environment is required to use `url_out` service</b></blockquote>\n
+                    <html><blockquote style='background-color:#faf3ac; border-color:#DFDFDF; color:#3b3b3b;'><b>⚠This method is only used for testing purpose. In a production environment is required to use `url_out` service</b></br>
                     The signed file is only available if `url_out` is not specified in <b>sign</b> call</blockquote></html>"
       produces:
         - application/pdf
