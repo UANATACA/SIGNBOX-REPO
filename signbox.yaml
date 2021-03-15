@@ -143,7 +143,7 @@ paths:
           name: file_in
           type: file
           description: "Local path of the file to be signed.\n
-                        - **File type in base64 is not accpeted**\n
+                        - **File type in base64 is not accepted**\n
                         - If this parameter is specified, **leave `url_in` blank**"
         - in: formData
           name: url_in
