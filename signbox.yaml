@@ -412,8 +412,8 @@ paths:
       summary: JOB
       tags:
         - API Reference
-      description: "Gets the state of a signature request by its job id.<br>
-                    ⚠ **This method is only used for testing purpose. In a production environment is required to use `urlback` service.**"
+      description: "<html>Gets the state of a signature request by its job id.<br>
+                    <blockquote style="background-color:#faf3ac; border-color:#5a5a5a; color:#3b3b3b;"> ⚠ **This method is only used for testing purpose. In a production environment is required to use `urlback` service.**</blockquote></html>"
       produces:
         - text/plain
       parameters:

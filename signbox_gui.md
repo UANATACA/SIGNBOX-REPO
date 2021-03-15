@@ -11,7 +11,7 @@ SignBox Optimizer is a server system exposing http RESTful APIs by means of whic
 For environments demanding high performance SignBox can be coupled with a pool of SignBox Optimizer, a component performing the most computationally expensive workload of the signature process, thus reducing the data traffic on the local network and make the most of the cryptographic hardware acceleration.
 Signature keys are stored remotely at Uanataca Trusted Service Center.
 </div>
-
+<br></br>
 ![img](https://i.ibb.co/qjxqHtg/Grupo-12227.png)
 
 
@@ -39,7 +39,7 @@ The Virtual Machine is supplied in an OVA file. SignBox Optimizer image is compa
 
 > STEP 1: Import SignBox Optimizer (VM) in the virtual environment.
 <div style="text-align: justify">
-Adjust the system requirements for optimal usage considering host terminal resources described in <a href="#section/Configuration/hardware-requirements"> hardware requirements</a>.
+Adjust the system requirements for optimal usage considering host terminal resources described in <a href="#section/Configuration/Hardware-requirements"> hardware requirements</a>.
 </div>
 
 </br>
