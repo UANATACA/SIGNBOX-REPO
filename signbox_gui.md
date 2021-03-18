@@ -13,7 +13,7 @@ Signature keys are stored remotely at Uanataca Trusted Service Center.
 </div>
 <br></br>
 
-![img](https://i.ibb.co/qjxqHtg/Grupo-12227.png)
+![img](https://i.ibb.co/FzHZzfx/signbox-hiw.png)
 
 
 # Configuration
