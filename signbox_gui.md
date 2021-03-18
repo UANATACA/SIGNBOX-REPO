@@ -231,9 +231,11 @@ Extract the zip content in a local folder.
 
 > STEP 2: Convert image and create alias settings
 
-The ARGB Tool is performed through an executable file that is accessible at **{extract_folder}\argb-graphic_signature\argb-tool\bin** path in a Windows terminal. It just requires to copy the original iamge to the this path and open a command prompt. 
+The ARGB Tool is performed through an executable file that is accessible in a Windows terminal at:<br>
+**..\argb-graphic_signature\argb-tool\bin**
 
-Then run this command with the position x1,y1,x2,y2 coordenates:
+It just requires to copy the original image to this path and open a command prompt. 
+Then run this command with the position <x1,y1,x2,y2> coordenates:
 
 	argb utils make-ini image_filename.png [--out-dir folder_name] [--alias your_alias_name] [--position 80,80,380,230] 
 
