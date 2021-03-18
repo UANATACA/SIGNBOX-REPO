@@ -35,7 +35,7 @@ SignBox Optimizer can be supplied as a Docker or as a Virtual Machine image.
 
 
 
-## SignBox on Docker
+## SignBox Optimizer on Docker
 
 
 This configuration requires a server with Linux operating system.
@@ -125,7 +125,7 @@ Run:
 </br>
 
 
-## SignBox on Virtual Machine (OVA)
+## SignBox Optimizer on Virtual Machine (OVA)
 <div style="text-align: justify">
 The Virtual Machine is supplied in an OVA file. SignBox Optimizer image is compatible with common virtual environments like VMWare, AWS, Azure or VirtualBox.
 </div>
@@ -164,21 +164,14 @@ Example:
 ## Signature Image Configuration
 
 
-A visual graphic signature can be placed as an image in the signed document. The image contains  
-
-The parameters of the image to be placed on a document when is signed, can be adjusted on the `alias.ini` file which is located at: 
+A visual signature can be placed as an image in the signed document. The visual signature is composed by an image and text. SignBox allows to create and store multiple templates. The parameters can be adjusted on the `alias.ini` file which is located at: 
 
 **/opt/bit4id/de/etc/img** (Virtual Machine)
 
 **/opt/SignBox_Optimizer/common/etc/img** (Docker)
 
-The `alias.ini` file contains the size parameters of each stored image as well as the signature associated text, all represented by an "alias" which is included as a parameter in the **SIGN** API call.
+The `alias.ini` file contains templates size parameters of each stored image as well as the signature associated text, all represented by an "alias" which is included as a parameter in the **SIGN** API call.
 
-This is how the `alias.ini` file should look like (three different images are stored):
-
-![img](https://i.ibb.co/23g2D1j/signbox-image.png)
-
-Where:
 
 <html>
 <table>
@@ -186,26 +179,30 @@ Where:
     <th>Parameter</th><th>Description</th><th>Example</th>
   </tr>
   <tr>
-    <td>[alias]</td><td>img_bookmark for SIGN Call</td><td>bit4id</td>
+    <td>[alias]</td><td> <b>img_bookmark</b> parameter in <a href="#tag/API-Reference/paths/~1api~1sign/post"> SIGN</a> Call</td><td>uanataca</td>
   </tr>
   <tr>
-    <td>y2</td><td>Top Y Coordinate (measured from page bottom)</td><td>180</td>
-  </tr>
-  <tr>
-    <td>x2</td><td>Right X Coordinate (measured from page left side)</td><td>500</td>
-  </tr>
-  <tr>
-    <td>size_x</td><td>Horizontal size in pt</td><td>512</td>
-  </tr>
-  <tr>
-    <td>size_y</td><td>Vertical size in pt</td><td>512</td>
+    <td>x1</td><td>Left X Coordinate (measured from page left side)</td><td>150</td>
   </tr>
   <tr>
     <td>y1</td><td>Bottom Y Coordinate (measured from page bottom)</td><td>80</td>
   </tr>
   <tr>
-    <td>x1</td><td>Left X Coordinate (measured from page left side)</td><td>150</td>
+    <td>x2</td><td>Right X Coordinate (measured from page left side)</td><td>500</td>
   </tr>
+  <tr>
+    <td>y2</td><td>Top Y Coordinate (measured from page bottom)</td><td>180</td>
+  </tr>
+  <tr>
+    <td>img</td><td>Image argb filename</td><td>uanataca.argb</td>
+  </tr>
+  <tr>
+    <td>size_x</td><td>Horizontal image size in pt</td><td>512</td>
+  </tr>
+  <tr>
+    <td>size_y</td><td>Vertical iamge size in pt</td><td>512</td>
+  </tr>
+
   <tr>
     <td>paragraph_format</td><td>Text details structure</td><td>[{ "font" : ["Universal-Bold", 50]...</td>
   </tr>
@@ -213,24 +210,39 @@ Where:
 </br> 
 </html>
 
-**PLEASE NOTE THAT THE IMAGE ADDITION TO A SIGNATURE IS ALWAYS OPTIONAL.**
+Image .argb files must be locateed in the same **/img** directory where `alias.ini` is placed. Those files are created from the .png or .jpg files by using the **ARGB Tool.**
+
+This is how the `alias.ini` file should look like (three different images are stored):
+
+![img](https://i.ibb.co/23g2D1j/signbox-image.png)
 
 
-As can be seen, in case of image addition the .argb files must present in the same **/img** directory where `alias.ini` is placed. Those files are created from the original .png or .jpg files by using the **ARGB Tool.**
+## ARGB Tool
+
+ARGB is a Windows tool that converts a PNG or JPG image to ARGB image type and generates the settings to include in the `alias.ini` file.
+
+<a href="http://cdn.bit4id.com/es/uanataca/public/signbox/release/ova/signbox-optimizer-1.3.zip"> ARGB Tool download</a>
 
 
-## Signature Image Creation
+> STEP 1: Extract zip content
 
-The ARGB Tool is performed through an executable file that is accessible at /ARGB\_TOOL/bin. In a Windows terminal, it just requires to extract the provided ARGB_TOOL.zip on any location, then open a command prompt and move the original image files to **/ARGB\_TOOL/bin** for conversion. 
+Extract the zip content in a local folder.
+</br>
 
-Then execute:
+> STEP 2: Convert image and create alias settings
 
-	argb utils make-ini bit4id.png [--out-dir directory] [--alias aliasname] [--position 150,80,500,180] 
+The ARGB Tool is performed through an executable file that is accessible at **{extract_folder}\argb-graphic_signature\argb-tool\bin** path in a Windows terminal. It just requires to copy the original iamge to the this path and open a command prompt. 
+
+Then run this command with the position x1,y1,x2,y2 coordenates:
+
+	argb utils make-ini image_filename.png [--out-dir folder_name] [--alias your_alias_name] [--position 80,80,380,230] 
 
 The result of this command will consist in two files:
 
-- An `alias.ini` file with all image parameters.
-- A `bit4id.argb` file that must be moved to the Docker/VM **/img**  directory.
+- An `alias.ini` file with all image parameters
+- A `image_filename.argb` file
+
+Both files must be moved to the **/img** directory in SignBox Optimizer (see <a href="#section/Configuration/Signature-Image-Configuration"> image folders path</a>)
 
 
 
