@@ -6,10 +6,12 @@ SignBox is a high performance, enterprise-grade solution for automated digital s
 
 # How it works
 <div style="text-align: justify">
-SignBox Optimizer is a server system exposing http RESTful APIs by means of which, business applications are enabled to require the digital signature of files batch. The system provides options for several digital signature formats including time stamping and long term validation. 
+The service is given with SignBox Optimizer that is a server system exposing http RESTful APIs by means of which, business applications are enabled to require the digital signature of files batch.
 <br></br>
-For environments demanding high performance SignBox can be coupled with a pool of SignBox Optimizer, a component performing the most computationally expensive workload of the signature process, thus reducing the data traffic on the local network and make the most of the cryptographic hardware acceleration.
-Signature keys are stored remotely at Uanataca Trusted Service Center.
+SignBox Optimizer performs the most computationally expensive workload of the signature process, thus reducing the data traffic on the local network and make the most of the cryptographic hardware acceleration. The documnets to be signed are processed in the customer business layer and are not send to Uanataca Services, instead is sent a hash of the document created using a hash algorithm. For environments demanding high performance, SignBox can be coupled with a pool of SignBox Optimizer.
+<br></br>
+The system provides options for several digital signature formats including time stamping and long term validation. 
+The signature is performed in Uanataca Trusted Service Center where signature keys are secure remotely stored.
 </div>
 <br></br>
 
@@ -18,7 +20,7 @@ Signature keys are stored remotely at Uanataca Trusted Service Center.
 
 # Configuration
 
-SignBox Optimizer can be supplied as a Virtual Machine or as a Docker image.
+SignBox Optimizer can be supplied as a Docker or as a Virtual Machine image.
 
 
 
@@ -32,34 +34,8 @@ SignBox Optimizer can be supplied as a Virtual Machine or as a Docker image.
 **HDD:** 200 GB
 
 
-## SIGNBOX on Virtual Machine (OVA)
-<div style="text-align: justify">
-The Virtual Machine is supplied in an OVA file. SignBox Optimizer image is compatible with common virtual environments like VMWare, AWS, Azure or VirtualBox.
-</div>
-</br>
 
-> STEP 1: Import SignBox Optimizer (VM) in the virtual environment.
-<div style="text-align: justify">
-Adjust the system requirements for optimal usage considering host terminal resources described in <a href="#section/Configuration/Hardware-requirements"> hardware requirements</a>.
-</div>
-
-</br>
-
-> STEP 2: Network configuration.
-<div style="text-align: justify">
-The network settings are configured on the file `ifcfg-ens160`, which can be found in the path **/etc/sysconfig/network-scripts**. Edit the file and insert the correct IP address, network mask, gateway and DNS for your network.
-</div>
-Then restart network services with command **service network restart**.
-
-Example:
-
-![img](https://i.ibb.co/ccwRbbh/signbox-docker5.png)
-
-</br>
-
-
-
-## SIGNBOX on Docker
+## SignBox on Docker
 
 
 This configuration requires a server with Linux operating system.
@@ -149,11 +125,46 @@ Run:
 </br>
 
 
+## SignBox on Virtual Machine (OVA)
+<div style="text-align: justify">
+The Virtual Machine is supplied in an OVA file. SignBox Optimizer image is compatible with common virtual environments like VMWare, AWS, Azure or VirtualBox.
+</div>
+</br>
+
+> STEP 1: Import SignBox Optimizer (VM) in the virtual environment.
+
+<div style="text-align: justify">
+Adjust the system requirements for optimal usage considering host terminal resources described in <a href="#section/Configuration/Hardware-requirements"> hardware requirements</a>.
+</div>
+
+</br>
+
+> STEP 2: Network configuration.
+
+The network settings are configured on the file `ifcfg-ens160`, which can be found in the path **/etc/sysconfig/network-scripts**. Edit the file and insert the correct IP address, network mask, gateway and DNS for your network.
+
+Then restart network services with command **service network restart**.
+
+Example:
+
+![img](https://i.ibb.co/ccwRbbh/signbox-docker5.png)
+
+> **Proxy network** settings
+
+The Proxy settings are configured in the file `setting.ini` which can be found in path **/opt/bit4id/de/etc**. Edit the file and insert proxy address, port and credentials if are needed. 
+
+It is possible to include url exceptions for services that don't use proxy network. Exceptions must be included in regular expression format.
+
+Example:
+
+![img](https://i.ibb.co/ZmRWP0W/signbox-ova1.png)
+</br>
+
 
 ## Signature Image Configuration
 
 
-SignBox allow 
+A visual graphic signature can be placed as an image in the signed document. The image contains  
 
 The parameters of the image to be placed on a document when is signed, can be adjusted on the `alias.ini` file which is located at: 
 
