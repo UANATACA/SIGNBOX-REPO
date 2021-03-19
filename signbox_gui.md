@@ -248,10 +248,10 @@ Both files must be moved to the **/img** directory in SignBox Optimizer (see <a 
 
 
 
-## URL OUT service
+## URL Out Service
 
 
-## URL back service
+## URL Back Service
 
 
 # Logs
