@@ -221,7 +221,7 @@ This is how the `alias.ini` file should look like (three different images are st
 
 ARGB is a Windows tool that converts a PNG or JPG image to ARGB image type and generates the settings to include in the `alias.ini` file.
 
-<a href="http://cdn.bit4id.com/es/uanataca/public/signbox/argb-graphic_signature.zip"> ARGB Tool download</a>
+<a href="https://cdn.bit4id.com/es/uanataca/public/signbox/argb-graphic_signature.zip"> ARGB Tool download</a>
 
 
 > STEP 1: Extract zip content
@@ -274,4 +274,4 @@ Virtual Machine path:
 A postman collection is available as a support for a quick start.<br>
 It is only required to edit `host`variable in Postman environment with the IP or domain of SignBox Optimizer.
 
-<a href="http://cdn.bit4id.com/es/uanataca/public/signbox/Uanataca_SignBox_Postman.zip"> SignBox Postman collection download</a>
+<a href="https://cdn.bit4id.com/es/uanataca/public/signbox/Uanataca_SignBox_Postman.zip"> SignBox Postman collection download</a>
