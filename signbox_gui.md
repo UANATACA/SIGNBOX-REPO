@@ -247,18 +247,31 @@ The result of this command will consist in two files:
 Both files must be moved to the **/img** directory in SignBox Optimizer (see <a href="#section/Configuration/Signature-Image-Configuration"> image folders path</a>)
 
 
+
+## URL OUT service
+
+
+## URL back service
+
+
 # Logs
 
 Service logs files are stored in a local folder in SignBox Optimizer.
 
-**/var/log/de** (Virtual Machine)
+Docker path:
 
-**./common/etc/logs** (Docker)
+**./common/etc/logs**
+
+Virtual Machine path:
+
+**/var/log/de**
+
+
 
 
 # Postman collection
 
-A postman collection is available as a support for a quick start testing.<br>
-It is obnly required to edit `host`variable in Postman environment.
+A postman collection is available as a support for a quick start.<br>
+It is only required to edit `host`variable in Postman environment with the IP or domain of SignBox Optimizer.
 
-<a href="http://cdn.bit4id.com/es/uanataca/public/signbox/Uanataca_SignBox_Postman.zip"> Postman collection download</a>
+<a href="http://cdn.bit4id.com/es/uanataca/public/signbox/Uanataca_SignBox_Postman.zip"> SignBox Postman collection download</a>
