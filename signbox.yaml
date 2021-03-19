@@ -153,12 +153,12 @@ paths:
         - in: formData
           name: url_out
           type: string
-          description: "Url where to send signed file. See sample code in <a href='#section/Configuration/Url-out'>Url out configuration</a>"
+          description: "Url where to send signed file. See sample code in <a href='#section/Configuration/URL-Out-Service'>Url out configuration</a>"
           required: true
         - in: formData
           name: urlback
           type: string
-          description: "Url where to send signing process log. See sample code in <a href='#section/Configuration/Url-back'>Url back configuration</a>"
+          description: "Url where to send signing process log. See sample code in <a href='#section/Configuration/URL-Back-Service'>Url back configuration</a>"
           required: true
         - in: formData
           name: env
