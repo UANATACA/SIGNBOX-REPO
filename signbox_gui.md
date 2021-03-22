@@ -43,32 +43,28 @@ This configuration requires a server with Linux operating system.
 </br>
 
 
-> STEP 1: Install Docker, Docker-Compose and Python.
+> STEP 1: Install Docker and Docker-Compose.
 
 *Docker*
 
 Run the following commands in this order.
 
+	sudo yum install -y yum-utils
 	yum install -y yum-utils device-mapper-persistent-data lvm2
 	yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-	yum install docker-ce
-	usermod -aG docker $(whoami)
-	systemctl enable docker.service
-	systemctl start docker.service
+	sudo yum install docker-ce docker-ce-cli containerd.io
+	sudo systemctl start docker
 
-*Docker-Compose & Python tools*
+
+
+*Docker-Compose*
 
 Run the following commands in this order.
 
 
-	yum install epel-release
-	yum install -y python-pip
-	pip install --upgrade pip
-	yum upgrade python*
-	yum install gcc
-	pip install --upgrade setuptools
-	yum install python-devel
-	pip install docker-compose
+	sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	chmod +x /usr/local/bin/docker-compose
+
 
 Run command **docker-compose version** to check the installation. The outcome should show this information:
 
@@ -147,7 +143,7 @@ Then restart network services with command **service network restart**.
 
 Example:
 
-![img](https://i.ibb.co/ccwRbbh/signbox-docker5.png)
+![img](https://i.ibb.co/Z8jpKZD/signbox-docker5.png)
 
 > **Proxy network** settings
 
