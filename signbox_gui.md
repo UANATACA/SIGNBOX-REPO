@@ -151,7 +151,7 @@ Example:
 
 > **Proxy network** settings
 
-The Proxy settings are configured in the file `setting.ini` which can be found in path **/opt/bit4id/de/etc**. Edit the file and insert proxy address, port and credentials if are needed. 
+The Proxy settings are configured in the file `settings.ini` which can be found in path **/opt/bit4id/de/etc**. Edit the file and insert proxy address, port and credentials if are needed. 
 
 It is possible to include url exceptions for services that don't use proxy network. Exceptions must be included in regular expression format.
 
