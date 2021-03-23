@@ -20,7 +20,7 @@ The signature is performed in Uanataca Trusted Service Center where signature ke
 
 # Configuration
 
-SignBox Optimizer can be supplied as a Docker or as a Virtual Machine image.
+SignBox Optimizer can be supplied as a **Docker** or as a **Virtual Machine** image.
 
 
 
@@ -52,7 +52,7 @@ Run the following commands in this order.
 	sudo yum install -y yum-utils
 	yum install -y yum-utils device-mapper-persistent-data lvm2
 	yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-	sudo yum install docker-ce docker-ce-cli containerd.io
+	sudo yum install -y docker-ce docker-ce-cli containerd.io
 	sudo systemctl start docker
 
 
@@ -73,32 +73,27 @@ Run command **docker-compose version** to check the installation. The outcome sh
 
 </br>
 
-> STEP 2: Create folders to store settings and logs outside docker image.
+> STEP 2: Extract and copy SignBox Optimizer zip content to the server.
 
-Create a local folder named **SignBox_Optimizer** and extract all .zip content here.
+Extract all `signbox_optimizer_docker.zip` content in a local folder.
 
 Move SignBox Optimizer folder to the path **/opt** in the server.
 
 The outcome should look like this:
 
-![img](https://i.ibb.co/q1P6k94/signbox-docker2.png)
-
-Create server folders to store service settings and logs.
-
-	mkdir -p /opt/SignBox_Optimizer/common/etc
-	mkdir -p /opt/SignBox_Optimizer/common/etc/logs
-
-Extract `img.zip` and `tsa.zip` content and move to path **/opt/SignBox_Optimizer/common/etc** in the server. This should look like this:
-
-![img](https://i.ibb.co/RbWZcdd/signbox-docker4-1.png)
+![img](https://i.ibb.co/vqJkZVn/signbox-docker2.png)
 
 </br>
 
-> STEP 3: Modify the `Docker-Compose.yml` file by adding the highlighted folders.
+> STEP 3: Mapping settings and logs volumes (environments with a pool of SignBox Optimizer).
 
-	cd /opt/SignBox_Optimizer
+In high performance environments with a pool of SignBox Optimizer, service settings and logs must be stored in a shared volume outside Optimizer servers. These volumes must be defined in `docker-compose.yanl` file in each SignBox Optimizer.
 
-![img](https://i.ibb.co/sbvLXwW/signbox-docker3.png)
+	cd /opt/signbox_optimizer
+
+Docker-compose.yaml settings file:
+
+![img](https://i.ibb.co/8XbTJQ6/signbox-docker3.png)
 
 </br>
 
@@ -106,9 +101,13 @@ Extract `img.zip` and `tsa.zip` content and move to path **/opt/SignBox_Optimize
 
 Run the following commands:
 
-	cd /opt/SignBox_Optimizer
-	tar -xzf docker_signbox.tar.gz 
+	cd /opt/signbox_optimizer
 	docker image load -i signbox.tar 
+
+Remove image file:
+
+	rm /opt/signbox_optimizer/signbox.tar
+
 
 </br>
 
@@ -164,7 +163,7 @@ A visual signature can be placed as an image in the signed document. The visual 
 
 **/opt/bit4id/de/etc/img** (Virtual Machine)
 
-**/opt/SignBox_Optimizer/common/etc/img** (Docker)
+**/opt/signbox_optimizer/img** or defined mapped volume (Docker)
 
 The `alias.ini` file contains templates size parameters of each stored image as well as the signature associated text, all represented by an "alias" which is included as a parameter in the **SIGN** API call.
 
@@ -256,7 +255,7 @@ Service logs files are stored in a local folder in SignBox Optimizer.
 
 Docker path:
 
-**./common/etc/logs**
+**./opt/signbox_optimizer/logs** or defined mapped volume 
 
 Virtual Machine path:
 
