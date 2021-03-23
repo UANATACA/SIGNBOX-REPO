@@ -85,9 +85,9 @@ The outcome should look like this:
 
 </br>
 
-> STEP 3: Mapping settings and logs volumes (environments with a pool of SignBox Optimizer).
+> STEP 3: Mapping volumes (for environments with a pool of SignBox Optimizer).
 
-In high performance environments with a pool of SignBox Optimizer, service settings and logs must be stored in a shared volume outside Optimizer servers. These volumes must be defined in `docker-compose.yanl` file in each SignBox Optimizer.
+In high performance environments with a pool of SignBox Optimizer, service settings and logs must be stored in a shared volume outside Optimizer servers. These volumes must be defined in `docker-compose.yaml` file in each SignBox Optimizer.
 
 	cd /opt/signbox_optimizer
 
