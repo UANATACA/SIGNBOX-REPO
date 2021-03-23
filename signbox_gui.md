@@ -91,13 +91,13 @@ In high performance environments with a pool of SignBox Optimizer, service setti
 
 	cd /opt/signbox_optimizer
 
-Docker-compose.yaml settings file:
+Docker-compose.yml settings file:
 
-![img](https://i.ibb.co/8XbTJQ6/signbox-docker3.png)
+![img](https://i.ibb.co/zRSSH0L/signbox-docker3.png)
 
 </br>
 
-> STEP 4: Load Docker SignBox image.
+> STEP 4: Load SignBox Docker image.
 
 Run the following commands:
 
@@ -161,9 +161,9 @@ Example:
 
 A visual signature can be placed as an image in the signed document. The visual signature is composed by an image and text. SignBox allows to create and store multiple templates. The parameters can be adjusted on the `alias.ini` file which is located at: 
 
-**/opt/bit4id/de/etc/img** (Virtual Machine)
+**/opt/signbox_optimizer/img** or custom mapped volume (Docker)
 
-**/opt/signbox_optimizer/img** or defined mapped volume (Docker)
+**/opt/bit4id/de/etc/img** (Virtual Machine)
 
 The `alias.ini` file contains templates size parameters of each stored image as well as the signature associated text, all represented by an "alias" which is included as a parameter in the **SIGN** API call.
 
@@ -255,7 +255,7 @@ Service logs files are stored in a local folder in SignBox Optimizer.
 
 Docker path:
 
-**./opt/signbox_optimizer/logs** or defined mapped volume 
+**/opt/signbox_optimizer/logs** or custom mapped volume 
 
 Virtual Machine path:
 
