@@ -49,6 +49,7 @@ This configuration requires a server with Linux operating system.
 
 Run the following commands in this order.
 
+	sudo yum update
 	sudo yum install -y yum-utils
 	yum install -y yum-utils device-mapper-persistent-data lvm2
 	yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
