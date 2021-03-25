@@ -12,8 +12,13 @@ host: signbox.developers.uanataca.com
 schemes: 
   - https
 
+x-tagGroups:
+  - name: API Reference
+    tags:
+      - Signature
+
 tags:
-- name: "API Reference"
+- name: "Signature"
   description: "
   <html>
   <table>
