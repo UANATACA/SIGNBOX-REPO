@@ -49,7 +49,7 @@ paths:
     get: 
       summary: ECHO
       tags:
-        - API Reference
+        - Signature
       description: Replies back what it receives to check the service availability.
       produces:
         - text/plain
@@ -137,7 +137,7 @@ paths:
     post:
       summary: SIGN
       tags:
-        - API Reference
+        - Signature
       description: Signs a local or a remote hosted file.
       produces:
         - text/plain
@@ -416,7 +416,7 @@ paths:
     get: 
       summary: JOB
       tags:
-        - API Reference
+        - Signature
       description: "Gets the state of a signature request by its job id.</br>
                     <html><blockquote style='background-color:#faf3ac; border-color:#DFDFDF; color:#3b3b3b;'><b>⚠This method is only used for testing purpose. In a production environment is required to use `urlback` service.</b></blockquote></html>"
       produces:
@@ -507,7 +507,7 @@ paths:
     get: 
       summary: RESULT
       tags:
-        - API Reference
+        - Signature
       description: "Returns the signed file of a signature request by its job id.</br>
                     <html><blockquote style='background-color:#faf3ac; border-color:#DFDFDF; color:#3b3b3b;'><b>⚠This method is only used for testing purpose. In a production environment is required to use `url_out` service</b></br>
                     The signed file is only available if `url_out` is not specified in <b>sign</b> call</blockquote></html>"
@@ -599,7 +599,7 @@ paths:
     post: 
       summary: OTP
       tags:
-        - API Reference
+        - Signature
       description: "Generates an otp for the specified digital identity.</br>
                     <html><blockquote style='background-color:#faf3ac; border-color:#DFDFDF; color:#3b3b3b;'><b>⚠This method is only required and available for specific digital identities</b></blockquote></html>"
       produces:
