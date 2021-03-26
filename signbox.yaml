@@ -3,7 +3,7 @@ info:
   version: '1.0'
   title: UANATACA SIGNBOX API DOCUMENTATION
   x-logo:
-      url: https://i.ibb.co/QrsG1Cs/signbox-logo.png
+      url: https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/signbox-logo.png
       altText: Signbox logo
   description:
     $ref: ./signbox_gui.md
