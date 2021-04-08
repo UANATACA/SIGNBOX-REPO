@@ -211,8 +211,6 @@ This is how the `alias.ini` file should look like (three different images are st
 
 ![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-image.png?raw=true)
 
-</br>
-
    
 <div id="paragraph" style="padding-top: 60px;"><h2>Paragraph format<h2></div>
 
