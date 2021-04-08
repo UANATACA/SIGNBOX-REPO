@@ -249,7 +249,7 @@ The signature image permits the addition of identifying text with the signer's a
 * $(reason)s : “bit4-reason” parameter value
 * $(location)s : “bit4-location” parameter value
 
-Example:
+**Example:**
 
   [{ "font" : [" Universal ",50]," align ":" right","format ": [" Digitally Signed by $(CN)s","O=$(O)s","C=$(C)s","S=$(S)s","Date: $(date)s","CustomField1: CustomValue1 ","CustomField2: CustomValue1 ","CustomField3: CustomValue3 "]}]
 
