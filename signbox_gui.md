@@ -255,7 +255,7 @@ Example:
 
 From this configuration, the image paragraph should look like as shown below:
 
-
+![img] (https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/paragraph_format.JPG)
 
 
 ## ARGB Tool
