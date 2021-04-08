@@ -49,8 +49,7 @@ This configuration requires a server with Linux operating system.
 
 Run the following commands in this order.
 
-	sudo yum update
-	sudo yum install -y yum-utils
+	sudo yum update -y
 	yum install -y yum-utils device-mapper-persistent-data lvm2
 	yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 	sudo yum install -y docker-ce docker-ce-cli containerd.io
@@ -211,6 +210,52 @@ Image .argb files must be locateed in the same **/img** directory where `alias.i
 This is how the `alias.ini` file should look like (three different images are stored):
 
 ![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-image.png?raw=true)
+
+### Paragraph format
+
+The signature image permits the addition of identifying text with the signer's associated data. This parameter allows to define the style and the content of the signature image, according to the following JSON object:
+
+  [{ "font": [<FONTFAMILY>,<FONTSIZE>]," align" : <ALIGNVALUE>, "format": [<LINE1>,<LINE2>,...,<LINEN> ]}]
+
+**font** (optional) defines the text format to include in the signature image. The parameters <FONTFAMILY> and <FONTSIZE> correspond to the font style and size respectively. The supported styles are the following:
+
+* "Universal" (default): This style belongs to the Sans-Serif category (normal)
+* "Univeral-Bold": Universal font in bold
+* "Univeral-Italic": Universal font in italic
+* “Universal-BoldItalic”: Universal font in bold and italic
+* "Times": This style belongs to the Serif category
+* "Times-Bold": Times font in bold
+* "Times-Italic": Times font in italic
+* "Times-BoldItalic": Times font in bold and italic
+
+<FONTSIZE> specifies the character size, defined as points. The sofware adjusts automatically the font size according to the dimensions of the signature image.
+
+**align** (optional) defines the text alignment related to an image (if exists). It can assume the following values:
+
+* right: right text alignment (default)
+* left: left text alignment
+* middle: overlapped text
+
+**format** defines the text lines that will appear on the signature image. These lines can be created from the information included in the signer's digital certificate:
+
+* $(CN)s : CommonName
+* $(L)s : Locality
+* $(S)s : stateOrProvinceName
+* $(OU)s : organizationalUnitName
+* $(E)s : email
+* $(Email)s : email includen in the Subject Alternative Name
+* $(Issuer)s : Certificate CA Issuer Common Name 
+* $(date)s : Date and time of the signature. Compliant to ISO 860 standard.
+* $(reason)s : “bit4-reason” parameter value
+* $(location)s : “bit4-location” parameter value
+
+Example:
+
+  [{ "font" : [" Universal ",50]," align ":" right","format ": [" Digitally Signed by $(CN)s","O=$(O)s","C=$(C)s","S=$(S)s","Date: $(date)s","CustomField1: CustomValue1 ","CustomField2: CustomValue1 ","CustomField3: CustomValue3 "]}]
+
+From this configuration, the image paragraph should look like as shown below:
+
+
 
 
 ## ARGB Tool
