@@ -195,11 +195,11 @@ The `alias.ini` file contains templates size parameters of each stored image as 
     <td>size_x</td><td>Horizontal image size in pt</td><td>512</td>
   </tr>
   <tr>
-    <td>size_y</td><td>Vertical iamge size in pt</td><td>512</td>
+    <td>size_y</td><td>Vertical image size in pt</td><td>512</td>
   </tr>
 
   <tr>
-    <td>paragraph_format</td><td>Text details structure</td><td>[{ "font" : ["Universal-Bold", 50]...</td>
+    <td>paragraph_format</td><td>Text details structure. <a href="paragraph">See description below</a></td><td>[{ "font" : ["Universal-Bold", 50]...</td>
   </tr>
 </table> 
 </br> 
@@ -211,7 +211,11 @@ This is how the `alias.ini` file should look like (three different images are st
 
 ![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-image.png?raw=true)
 
-### **Paragraph format**
+</br>
+
+   
+<div id="paragraph" style="padding-top: 60px;"><h2>Paragraph format<h2></div>
+
 
 The signature image permits the addition of identifying text with the signer's associated data. This parameter allows to define the style and the content of the signature image, according to the following JSON object:
 
