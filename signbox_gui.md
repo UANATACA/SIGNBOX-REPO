@@ -199,7 +199,7 @@ The `alias.ini` file contains templates size parameters of each stored image as 
   </tr>
 
   <tr>
-    <td>paragraph_format</td><td>Text details structure. <a href="paragraph">See description below</a></td><td>[{ "font" : ["Universal-Bold", 50]...</td>
+    <td>paragraph_format</td><td>Text details structure. <a href="#paragraph">See description below</a></td><td>[{ "font" : ["Universal-Bold", 50]...</td>
   </tr>
 </table> 
 </br> 
