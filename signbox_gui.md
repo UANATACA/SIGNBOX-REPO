@@ -211,13 +211,13 @@ This is how the `alias.ini` file should look like (three different images are st
 
 ![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-image.png?raw=true)
 
-### Paragraph format
+### **Paragraph format**
 
 The signature image permits the addition of identifying text with the signer's associated data. This parameter allows to define the style and the content of the signature image, according to the following JSON object:
 
-  [{ "font": [<FONTFAMILY>,<FONTSIZE>]," align" : <ALIGNVALUE>, "format": [<LINE1>,<LINE2>,...,<LINEN> ]}]
+  [{ "font": [< FONTFAMILY >,< FONTSIZE >]," align" : < ALIGNVALUE >, "format": [< LINE1 >,< LINE2 >,...,< LINEN > ]}]
 
-**font** (optional) defines the text format to include in the signature image. The parameters <FONTFAMILY> and <FONTSIZE> correspond to the font style and size respectively. The supported styles are the following:
+**font** (optional) defines the text format to include in the signature image. The parameters < FONTFAMILY > and < FONTSIZE > correspond to the font style and size respectively. The supported styles are the following:
 
 * "Universal" (default): This style belongs to the Sans-Serif category (normal)
 * "Univeral-Bold": Universal font in bold
@@ -228,7 +228,7 @@ The signature image permits the addition of identifying text with the signer's a
 * "Times-Italic": Times font in italic
 * "Times-BoldItalic": Times font in bold and italic
 
-<FONTSIZE> specifies the character size, defined as points. The sofware adjusts automatically the font size according to the dimensions of the signature image.
+< FONTSIZE > specifies the character size, defined as points. The sofware adjusts automatically the font size according to the dimensions of the signature image.
 
 **align** (optional) defines the text alignment related to an image (if exists). It can assume the following values:
 
