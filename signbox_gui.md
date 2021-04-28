@@ -1,16 +1,16 @@
 # What it is
 
 <div style="text-align: justify">
-SignBox is a high performance, enterprise-grade solution for automated digital signature of any type of file. SignBox is a turnkey system that can be easily integrated with any business application thanks to its high-level web API based on the http RESTful paradigm.
+SignBox is a high performance, enterprise-grade solution for automated electronic signature of any type of file. SignBox is a turnkey system that can be easily integrated with any business application thanks to its high-level web API based on the http RESTful paradigm.
 </div>
 
 # How it works
 <div style="text-align: justify">
-The service is given with SignBox Optimizer that is a server system exposing http RESTful APIs by means of which, business applications are enabled to require the digital signature of files batch.
+The service is given with SignBox Optimizer that is a server system exposing http RESTful APIs by means of which, business applications are enabled to require the electronic signature of files batch.
 <br></br>
-SignBox Optimizer performs the most computationally expensive workload of the signature process, thus reducing the data traffic on the local network and make the most of the cryptographic hardware acceleration. The documnets to be signed are processed in the customer business layer and are not send to Uanataca Services, instead is sent a hash of the document created using a hash algorithm. For environments demanding high performance, SignBox can be coupled with a pool of SignBox Optimizer.
+SignBox Optimizer performs the most computationally expensive workload of the signature process, thus reducing the data traffic on the local network and make the most of the cryptographic hardware acceleration. The documents to be signed are processed in the customer business layer and are not send to Uanataca Services, instead is sent a hash of the document created using a hash algorithm. For environments demanding high performance, SignBox can be coupled with a pool of SignBox Optimizer.
 <br></br>
-The system provides options for several digital signature formats including time stamping and long term validation. 
+The system provides options for several electronic signature formats including time stamping and long term validation. 
 The signature is performed in Uanataca Trusted Service Center where signature keys are secure remotely stored.
 </div>
 <br></br>
@@ -38,7 +38,7 @@ SignBox Optimizer can be supplied as a **Docker** or as a **Virtual Machine** im
 ## SignBox Optimizer on Docker
 
 
-This configuration requires a server with Linux operating system.
+This configuration requires a server with Linux CentOS operating system.
 
 </br>
 
@@ -106,7 +106,7 @@ Run the following commands:
 
 Remove image file:
 
-	rm /opt/signbox_optimizer/signbox.tar
+	rm -rf /opt/signbox_optimizer/signbox.tar
 
 
 </br>
@@ -165,7 +165,7 @@ A visual signature can be placed as an image in the signed document. The visual 
 
 **/opt/bit4id/de/etc/img** (Virtual Machine)
 
-The `alias.ini` file contains templates size parameters of each stored image as well as the signature associated text, all represented by an "alias" which is included as a parameter in the **SIGN** API call.
+The `alias.ini` file contains templates size parameters of each stored image as well as the signature associated text, all represented by an "alias" which is included as a parameter in the <a href="#tag/Signature/paths/~1api~1sign/post"> SIGN</a> API call.
 
 
 <html>
@@ -174,7 +174,7 @@ The `alias.ini` file contains templates size parameters of each stored image as 
     <th>Parameter</th><th>Description</th><th>Example</th>
   </tr>
   <tr>
-    <td>[alias]</td><td> <b>img_bookmark</b> parameter in <a href="#tag/API-Reference/paths/~1api~1sign/post"> SIGN</a> Call</td><td>uanataca</td>
+    <td>[alias]</td><td> <b>img_bookmark</b> parameter in <a href="#tag/Signature/paths/~1api~1sign/post"> SIGN</a> Call</td><td>uanataca</td>
   </tr>
   <tr>
     <td>x1</td><td>Left X Coordinate (measured from page left side)</td><td>150</td>
@@ -199,15 +199,15 @@ The `alias.ini` file contains templates size parameters of each stored image as 
   </tr>
 
   <tr>
-    <td>paragraph_format</td><td>Text details structure. <a href="#paragraph">See description below</a></td><td>[{ "font" : ["Universal-Bold", 50]...</td>
+    <td>paragraph_format</td><td>Text details structure. <a href="#paragraph">See description</a></td><td>[{ "font" : ["Universal-Bold", 50]...</td>
   </tr>
 </table> 
 </br> 
 </html>
 
-Image .argb files must be locateed in the same **/img** directory where `alias.ini` is placed. Those files are created from the .png or .jpg files by using the **ARGB Tool.**
+Image .argb files must be locateed in the same **/img** directory where `alias.ini` is placed. Those files are created from the .png or .jpg files by using the <a href="#section/Configuration/ARGB-Tool">ARGB Tool</a>.
 
-This is how the `alias.ini` file should look like (three different images are stored):
+This is how the `alias.ini` file should look like (three different images are stored in this example):
 
 ![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-image.png?raw=true)
 
@@ -217,41 +217,41 @@ This is how the `alias.ini` file should look like (three different images are st
 
 The signature image permits the addition of identifying text with the signer's associated data. This parameter allows to define the style and the content of the signature image, according to the following JSON object:
 
-  [{ "font": [< FONTFAMILY >,< FONTSIZE >]," align" : < ALIGNVALUE >, "format": [< LINE1 >,< LINE2 >,...,< LINEN > ]}]
+  [{ "font": [< FONTFAMILY >,< FONTSIZE >],"align" : < ALIGNVALUE >, "format": [< LINE1 >,< LINE2 >,...,< LINEN > ]}]
 
-**font** (optional) defines the text format to include in the signature image. The parameters < FONTFAMILY > and < FONTSIZE > correspond to the font style and size respectively. The supported styles are the following:
+`font` (optional): defines the text format to include in the signature image. The parameters < FONTFAMILY > and < FONTSIZE > correspond to the font style and size respectively. The supported styles are the following:
 
-* "Universal" (default): This style belongs to the Sans-Serif category (normal)
-* "Univeral-Bold": Universal font in bold
-* "Univeral-Italic": Universal font in italic
-* “Universal-BoldItalic”: Universal font in bold and italic
-* "Times": This style belongs to the Serif category
-* "Times-Bold": Times font in bold
-* "Times-Italic": Times font in italic
-* "Times-BoldItalic": Times font in bold and italic
+* **Universal** (default): This style belongs to the Sans-Serif category (normal)
+* **Univeral-Bold**: Universal font in bold
+* **Univeral-Italic**: Universal font in italic
+* **Universal-BoldItalic**: Universal font in bold and italic
+* **Times**: This style belongs to the Serif category
+* **Times-Bold**: Times font in bold
+* **Times-Italic**: Times font in italic
+* **Times-BoldItalic**: Times font in bold and italic
 
 < FONTSIZE > specifies the character size, defined as points. The sofware adjusts automatically the font size according to the dimensions of the signature image.
 
-**align** (optional) defines the text alignment related to an image (if exists). It can assume the following values:
+`align` (optional): defines the text alignment related to an image (if exists). It can assume the following values:
 
-* right: right text alignment (default)
-* left: left text alignment
-* middle: overlapped text
+* **right**: right text alignment (default)
+* **left**: left text alignment
+* **middle**: overlapped text
 
-**format** defines the text lines that will appear on the signature image. These lines can be created from the information included in the signer's digital certificate:
+`format`: defines the text lines that will appear on the signature image. These lines can be created from static text and information included in the signer's digital certificate:
 
-* $(CN)s : CommonName
-* $(L)s : Locality
-* $(S)s : stateOrProvinceName
-* $(OU)s : organizationalUnitName
-* $(E)s : email
-* $(Email)s : email includen in the Subject Alternative Name
-* $(Issuer)s : Certificate CA Issuer Common Name 
-* $(date)s : Date and time of the signature. Compliant to ISO 860 standard.
-* $(reason)s : “bit4-reason” parameter value
-* $(location)s : “bit4-location” parameter value
+* **$(CN)s** : CommonName
+* **$(L)s** : Locality
+* **$(S)s** : stateOrProvinceName
+* **$(OU)s** : organizationalUnitName
+* **$(E)s** : email
+* **$(Email)s** : email includen in the Subject Alternative Name
+* **$(Issuer)s** : Certificate CA Issuer Common Name 
+* **$(date)s** : Date and time of the signature. Compliant to ISO 860 standard.
+* **$(reason)s** : “bit4-reason” parameter value
+* **$(location)s** : “bit4-location” parameter value
 
-**Example:**
+Example:
 
   [{ "font" : [" Universal ",50]," align ":" right","format ": [" Digitally Signed by $(CN)s","O=$(O)s","C=$(C)s","S=$(S)s","Date: $(date)s","CustomField1: CustomValue1 ","CustomField2: CustomValue1 ","CustomField3: CustomValue3 "]}]
 
@@ -262,10 +262,9 @@ From this configuration, the image paragraph should look like as shown below:
 
 ## ARGB Tool
 
-ARGB is a Windows tool that converts a PNG or JPG image to ARGB image type and generates the settings to include in the `alias.ini` file.
+ARGB Tool is a Windows software that converts a PNG or JPG image to ARGB image type and generates the settings to include in the `alias.ini` file.
 
-<a href="https://cdn.bit4id.com/es/uanataca/public/signbox/argb-graphic_signature.zip"> ARGB Tool download</a>
-
+Download: <a href="https://cdn.bit4id.com/es/uanataca/public/signbox/argb-graphic_signature.zip"> ARGB Tool</a>
 
 > STEP 1: Extract zip content
 
