@@ -21,17 +21,20 @@ The signature is performed in Uanataca Trusted Service Center where signature ke
 # Configuration
 
 SignBox Optimizer can be supplied as a **Docker** or as a **Virtual Machine** image.
+See the configuration description in:<br>
+<a href="#section/Configuration/SignBox-Optimizer-on-Docker"> SignBox Optimizer on Docker</a><br>
+<a href="#section/Configuration/SignBox-Optimizer-on-Virtual-Machine-(OVA)"> SignBox Optimizer on Virtual Machine</a>
 
 
 
 ## Hardware requirements
 
 
-**CPU:** modern multicore (minimum 4 core)
+**CPU:**  modern multicore (minimum 4 core)
 
-**RAM:** 8GB
+**RAM:**  8GB
 
-**HDD:** 200 GB
+**HDD:**  200 GB
 
 
 
@@ -138,11 +141,13 @@ Adjust the system requirements for optimal usage considering host terminal resou
 
 The network settings are configured on the file `ifcfg-ens160`, which can be found in the path **/etc/sysconfig/network-scripts**. Edit the file and insert the correct IP address, network mask, gateway and DNS for your network.
 
-Then restart network services with command **service network restart**.
-
 Example:
 
 ![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-docker5.png?raw=true)
+
+Restart network services with command:
+
+	service network restart
 
 > **Proxy network** settings
 
@@ -165,7 +170,7 @@ A visual signature can be placed as an image in the signed document. The visual 
 
 **/opt/bit4id/de/etc/img** (Virtual Machine)
 
-The `alias.ini` file contains templates size parameters of each stored image as well as the signature associated text, all represented by an "alias" which is included as a parameter in the <a href="#tag/Signature/paths/~1api~1sign/post"> SIGN</a> API call.
+The `alias.ini` file contains templates with size parameters of each stored image as well as the signature associated text, all represented by an "alias" which is included as a parameter in the <a href="#tag/Signature/paths/~1api~1sign/post"> SIGN</a> API call.
 
 
 <html>
@@ -217,7 +222,7 @@ This is how the `alias.ini` file should look like (three different images are st
 
 The signature image permits the addition of identifying text with the signer's associated data. This parameter allows to define the style and the content of the signature image, according to the following JSON object:
 
-  [{ "font": [< FONTFAMILY >,< FONTSIZE >],"align" : < ALIGNVALUE >, "format": [< LINE1 >,< LINE2 >,...,< LINEN > ]}]
+	[{ "font": [< FONTFAMILY >,< FONTSIZE >],"align" : < ALIGNVALUE >, "format": [< LINE1 >,< LINE2 >,...,< LINEN > ]}]
 
 `font` (optional): defines the text format to include in the signature image. The parameters < FONTFAMILY > and < FONTSIZE > correspond to the font style and size respectively. The supported styles are the following:
 
@@ -253,7 +258,7 @@ The signature image permits the addition of identifying text with the signer's a
 
 Example:
 
-  [{ "font" : [" Universal ",50]," align ":" right","format ": [" Digitally Signed by $(CN)s","O=$(O)s","C=$(C)s","S=$(S)s","Date: $(date)s","CustomField1: CustomValue1 ","CustomField2: CustomValue1 ","CustomField3: CustomValue3 "]}]
+	[{ "font" : [" Universal ",50]," align ":" right","format ": [" Digitally Signed by $(CN)s","O=$(O)s","C=$(C)s","S=$(S)s","Date: $(date)s","CustomField1: CustomValue1 ","CustomField2: CustomValue1 ","CustomField3: CustomValue3 "]}]
 
 From this configuration, the image paragraph should look like as shown below:
 
@@ -265,11 +270,13 @@ From this configuration, the image paragraph should look like as shown below:
 ARGB Tool is a Windows software that converts a PNG or JPG image to ARGB image type and generates the settings to include in the `alias.ini` file.
 
 Download: <a href="https://cdn.bit4id.com/es/uanataca/public/signbox/argb-graphic_signature.zip"> ARGB Tool</a>
+</br>
 
 > STEP 1: Extract zip content
 
 Extract the zip content in a local folder.
-</br>
+
+</br></br>
 
 > STEP 2: Convert image and create alias settings
 
@@ -290,23 +297,110 @@ Both files must be moved to the **/img** directory in SignBox Optimizer (see <a 
 
 
 
-## URL Out Service
+## Webhooks
+
+SignBox API requires that the customer business develop a webhook to manage the service callbacks. There are two callbacks in the service that must be set in the parameters `url_out` and `urlback` of the <a href="#tag/Signature/paths/~1api~1sign/post"> SIGN</a> API call.
 
 
-## URL Back Service
+**urlback**
 
+The service logs are sent as a string in a HTTP POST request to the webhook url defined in this parameter.
+Each signature generates a single string composed by the error message and the signature job identifier. For a successful signature the string only contains the job id.
+
+Successful response:<br>
+
+	id=104.2
+
+Error response:
+
+	message=Error%3A+Pin+invalid&exception=Error&id=980.4
+
+**url_out**
+
+In a successful signature process, the result signed file is sent as a binary file in a HTTP POST request to the webhoook url defined in this parameter.
+
+
+> Sample code
+
+In this sample, signed files are saved with the original filename in a folder named 'signbox-files'.
+For the logs, a new log file is generated everyday containing daily logs. Log files are saved in a folder name 'logs', inside signbox-files folder.
+
+The **url_out** parameter is defined as:  
+
+	{host}/result_{filename}
+
+The **urlback** parameter is defined as:
+
+	{host}/servicelogs
+
+where {filename} is the filename of the document to be signed, and {host} is the IP or domaing from the server exposing the webhook.
+
+
+*Python*
+
+	import web
+	import os
+	
+	urls = (
+	        '/result_(.+), 'url_out',
+	        '/servicelogs', 'urlback'
+	        )
+	
+	app = web.application(urls, globals())
+	app = app.wsgifunc()
+	
+	class url_out:
+		def POST(self, name):
+		    data = web.data()
+		    os.chdir('/signbox-files')
+		    f = open("%s" % name,'w')
+		    f.write(data)
+		    f.close()
+		    return ''
+
+	class urlback:
+		def POST(self,name):
+		    data = web.data()
+		    os.chdir('/signbox-files/logs')
+		    f = open("%Y%m%d.txt" % name, 'a+')
+		    f.write(str(data))
+		    f.write(str("\n"))
+		    f.close()
+		    return ''
+	
+	if __name__ == "__main__":
+	    app.run()
+
+
+*PHP*
+
+	<?php
+	
+	//url_out
+
+	$post = file_get_contents('php://input',true);
+	$file_handle = fopen('/signbox-files/', 'w');
+	fwrite($file_handle, $post);
+	fclose($file_handle);
+	
+
+	//urlback
+
+	$post = file_get_contents('php://input');
+	$line = $post.PHP_EOL;
+	$myfile = fopen("/signbox-files/logs/%Y%m%d.txt", "a") or die("Unable to open file!");
+	fwrite($myfile, $line );
+	fclose($myfile);
+	
+	?>
 
 # Logs
 
 Service logs files are stored in a local folder in SignBox Optimizer.
 
-Docker path:
+**/opt/signbox_optimizer/logs** or custom mapped volume (Docker) 
 
-**/opt/signbox_optimizer/logs** or custom mapped volume 
-
-Virtual Machine path:
-
-**/var/log/de**
+**/var/log/de** (Virtual Machine)
 
 
 
@@ -317,3 +411,5 @@ A postman collection is available as a support for a quick start.<br>
 It is only required to edit `host`variable in Postman environment with the IP or domain of SignBox Optimizer.
 
 <a href="https://cdn.bit4id.com/es/uanataca/public/signbox/Uanataca_SignBox_Postman.zip"> SignBox Postman collection download</a>
+
+<div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>

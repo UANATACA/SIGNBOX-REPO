@@ -16,6 +16,7 @@ x-tagGroups:
   - name: API Reference
     tags:
       - Signature
+      - Troubleshooting
 
 tags:
 - name: "Signature"
@@ -26,19 +27,30 @@ tags:
       <th>Method</th><th>Endpoint</th><th>Action</th>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1echo/get'>/api/echo</a></td><td>Checks service availability</td>
+      <td>GET</td><td><a href='#tag/Signature/paths/~1api~1echo/get'>/api/echo</a></td><td>Checks service availability</td>
     </tr>
     <tr>
-      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1sign/post'>/api/sign</a></td><td>Signs a local or a remote hosted file</td>
+      <td>POST</td><td><a href='#tag/Signature/paths/~1api~1sign/post'>/api/sign</a></td><td>Signs a local or a remote hosted file</td>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1job~1{id}/get'>/api/job/{id}</a></td><td>Gets the state of a job</td>
+      <td>POST</td><td><a href='#tag/Signature/paths/~1api~1generate_otp/post'>/api/generate_otp</a></td><td>Send an otp code by sms to the signer</td>
+    </tr>
+  </table> 
+  </br> 
+  </html>"
+  
+- name: "Troubleshooting"
+  description: "
+  <html>
+  <table>
+    <tr>
+      <th>Method</th><th>Endpoint</th><th>Action</th>
     </tr>
     <tr>
-      <td>GET</td><td><a href='#tag/API-Reference/paths/~1api~1result~1{id}/get'>/api/result/{id}</a></td><td>Gets the signed file</td>
+      <td>GET</td><td><a href='#tag/Troubleshooting/paths/~1api~1job~1{id}/get'>/api/job/{id}</a></td><td>Gets the state of a job</td>
     </tr>
     <tr>
-      <td>POST</td><td><a href='#tag/API-Reference/paths/~1api~1generate_otp/post'>/api/generate_otp</a></td><td>Send an otp code by sms to the signer</td>
+      <td>GET</td><td><a href='#tag/Troubleshooting/paths/~1api~1result~1{id}/get'>/api/result/{id}</a></td><td>Gets the signed file</td>
     </tr>
   </table> 
   </br> 
@@ -150,20 +162,22 @@ paths:
           description: "Local path of the file to be signed.\n
                         - **File type in base64 is not accepted**\n
                         - If this parameter is specified, **leave `url_in` blank**"
+          required: true
         - in: formData
           name: url_in
           type: string
           description: "Url where to get the document to be signed.\n
                         - If this parameter is specified, **leave `file_in` blank**"     
+          required: true
         - in: formData
           name: url_out
           type: string
-          description: "Url where to send signed file. See sample code in <a href='#section/Configuration/URL-Out-Service'>Url out configuration</a>"
+          description: "Url where to send signed file. See description and sample code in <a href='#section/Configuration/Webhooks'>Webhooks configuration</a>"
           required: true
         - in: formData
           name: urlback
           type: string
-          description: "Url where to send signing process log. See sample code in <a href='#section/Configuration/URL-Back-Service'>Url back configuration</a>"
+          description: "Url where to send signing process log. See description and sample code in <a href='#section/Configuration/Webhooks'>Webhooks configuration</a>"
           required: true
         - in: formData
           name: env
@@ -176,7 +190,7 @@ paths:
           type: string
           enum: [pades, xades, cades]
           default: pades
-          description: "Types of supported files: \n
+          description: "Types of supported signature profiles: \n
                         - **pades** for PDF files \n
                         - **xades** for XML files \n
                         - **cades** for other files"
@@ -206,6 +220,7 @@ paths:
         - in: formData
           name: tsa_bookmark
           type: string
+          enum: [uanataca]
           description: Timestamp service alias name. This field is required for signatures with levels T, LTV or XL
         - in: formData
           name: billing_username
@@ -234,13 +249,13 @@ paths:
           name: npage
           type: string
           default: 0
-          description: "Page number where the image signature is placed.\n
+          description: "Page number where the image signature is placed. The first page starts in 0\n
                         - It is required an `img_bookmark` alias"
         - in: formData
           name: otp
           type: string
           description: "The OTP code previously sent to the user.\n
-                        This parameter is only required and available for specific digital identities"
+                        **This parameter is only required and available for specific digital identities**"
       responses:
         200:
           description: The sign request was executed
@@ -416,7 +431,7 @@ paths:
     get: 
       summary: JOB
       tags:
-        - Signature
+        - Troubleshooting
       description: "Gets the state of a signature request by its job id.</br>
                     <html><blockquote style='background-color:#faf3ac; border-color:#DFDFDF; color:#3b3b3b;'><b>⚠This method is only used for testing purpose. In a production environment is required to use `urlback` service.</b></blockquote></html>"
       produces:
@@ -507,7 +522,7 @@ paths:
     get: 
       summary: RESULT
       tags:
-        - Signature
+        - Troubleshooting
       description: "Returns the signed file of a signature request by its job id.</br>
                     <html><blockquote style='background-color:#faf3ac; border-color:#DFDFDF; color:#3b3b3b;'><b>⚠This method is only used for testing purpose. In a production environment is required to use `url_out` service</b></br>
                     The signed file is only available if `url_out` is not specified in <b>sign</b> call</blockquote></html>"
@@ -621,7 +636,6 @@ paths:
         name: uses
         description: Amount of uses for the generated otp
         type: number
-        required: true
       - in: formData
         name: env
         description: Reference environment for testing or production
