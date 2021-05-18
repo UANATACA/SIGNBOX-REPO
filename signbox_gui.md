@@ -1,17 +1,20 @@
 # What it is
 
 <div style="text-align: justify">
-SignBox is a high performance, enterprise-grade solution for automated electronic signature of any type of file. SignBox is a turnkey system that can be easily integrated with any business application thanks to its high-level web API based on the http RESTful paradigm.
+The high-performance solution for Bulk, Interactive and LTV signature service.  Our best option for signing large number of documents and transactions.
+<br></br>
+SignBox API is an enterprise-grade solution for automated electronic signature of any type of file or document. A turnkey system that can be easily integrated with any business application without altering the user experience and guaranteeing the legal security of your electronically signed documents. SignBox API is a high-level web API based on the http RESTful paradigm.
 </div>
 
 # How it works
+
 <div style="text-align: justify">
-The service is given with SignBox Optimizer that is a server system exposing http RESTful APIs by means of which, business applications are enabled to require the electronic signature of files batch.
+The API is given with SignBox Optimizer that is a server system exposing http RESTful API by means of which, business applications are enabled to require the electronic signature of large number of documents.
 <br></br>
 SignBox Optimizer performs the most computationally expensive workload of the signature process, thus reducing the data traffic on the local network and make the most of the cryptographic hardware acceleration. The documents to be signed are processed in the customer business layer and are not send to Uanataca Services, instead is sent a hash of the document created using a hash algorithm. For environments demanding high performance, SignBox can be coupled with a pool of SignBox Optimizer.
 <br></br>
-The system provides options for several electronic signature formats including time stamping and long term validation. 
-The signature is performed in Uanataca Trusted Service Center where signature keys are secure remotely stored.
+The system provides options for several electronic signature formats including time stamping and long term validation. The electronic signatures are performed in Uanataca Trusted Service Center side, where signature keys are stored in a Qualified Electronic Signature Creation Device (QSCD) system.
+
 </div>
 <br></br>
 
@@ -119,6 +122,19 @@ Remove image file:
 Run:
 
 	docker-compose up -d
+
+Check service status:
+
+	docker-compose ps
+
+                 Name                                 Command                State                 Ports
+	----------------------------------------------------------------------------------------------------------------------
+	signbox_optimizer_nginx_1               /docker-entrypoint.sh ngin ...   Up      0.0.0.0:443->443/tcp,:::443->443/tcp,
+                                                                                 	 0.0.0.0:80->80/tcp,:::80->80/tcp
+	signbox_optimizer_signbox_api_1         signbox start                    Up
+	signbox_optimizer_signbox_cryptosvc_1   signbox start                    Up
+
+All services must be UP.
 
 </br>
 
@@ -276,7 +292,7 @@ Download: <a href="https://cdn.bit4id.com/es/uanataca/public/signbox/argb-graphi
 
 Extract the zip content in a local folder.
 
-</br></br>
+</br>
 
 > STEP 2: Convert image and create alias settings
 
@@ -318,7 +334,7 @@ Error response:
 **url_out**
 
 In a successful signature process, the result signed file is sent as a binary file in a HTTP POST request to the webhoook url defined in this parameter.
-
+</br>
 
 > Sample code
 
