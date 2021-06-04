@@ -440,5 +440,5 @@ Need a better understanding of SignBox API? Check the video tutorials below and 
 The Docker Optimizer configuration requires an SignBox Optimizer image package and a server using Linux Operating System with Internet access. Please check our <a href="#section/Configuration/SignBox-Optimizer-on-Docker">documentation</a>.<br></br>
 
 <figure class="video_container">
-  <iframe width="560" margin-left="500px" height="315" src="https://youtu.be/WbfeRqXPXV0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/WbfeRqXPXV0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </figure>
