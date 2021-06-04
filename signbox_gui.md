@@ -46,7 +46,7 @@ See the configuration description in:<br>
 
 This configuration requires a server with Linux CentOS operating system.
 
-</br>
+<a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><img src="https://raw.githubusercontent.com/UANATACA/ONESHOT-REPO/test/img4.png"></a><a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><b>&nbsp;Watch on video!</b></a>
 
 
 > STEP 1: Install Docker and Docker-Compose.
@@ -429,3 +429,16 @@ It is only required to edit `host`variable in Postman environment with the IP or
 <a href="https://cdn.bit4id.com/es/uanataca/public/signbox/Uanataca_SignBox_Postman.zip"> SignBox Postman collection download</a>
 
 <div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>
+
+
+# Video tutorials
+
+Need a better understanding of SignBox API? Check the video tutorials below and follow step-by-step instructions! They will guarantee you use our API efficiently for the best experience in document signatures.
+
+## Docker Optimizer Configuration
+
+The Docker Optimizer configuration requires an SignBox Optimizer image package and a server using Linux Operating System with Internet access. Please check our <a href="#section/Configuration/SignBox-Optimizer-on-Docker">documentation</a>.<br></br>
+
+<figure class="video_container">
+  <iframe width="560" margin-left="500px" height="315" src="https://youtu.be/WbfeRqXPXV0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
