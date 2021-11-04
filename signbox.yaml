@@ -266,8 +266,9 @@ paths:
         - in: formData
           name: img_bookmark
           type: string
-          description: "Signature image alias name.<br>
-                        It is required to previous create an image template. See <HTML><a href='#section/Configuration/Signature-Image-Configuration'>Image Configuration</a></HTML>"
+          description: "Signature image alias name corresponding to a **previously stored image in the Optimizer**<br>
+                        It is required to previous create an image template. See <HTML><a href='#section/Configuration/Signature-Image-Configuration'>Image Configuration</a></HTML>\n
+                        - If `img_bookmark` is specified, `img` , `img_size` and `position` cannot, since these parameters are included in Optimizer alias.ini file"
         - in: formData
           name: img
           type: string
@@ -275,13 +276,12 @@ paths:
         - in: formData
           name: img_size
           type: string
-          description: "The **original** image size in pixels.\n
+          description: "The **original** image size in pixels. (Example: 200,140)\n
                         **Any mismatch will cause wrong adjustments of the image or it would simply not appear.**"
         - in: formData
           name: position
           type: string
-          description: "The image rectangle bottom-left & top-right corner coordinates in pixels corresponding to 72DPI resolution. **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively**\n
-                        - If `img_bookmark` is specified, `img` , `img_size` and `position` cannot, since these parameters are included in Optimizer alias.ini file"
+          description: "The image rectangle bottom-left & top-right corner coordinates in pixels corresponding to 72DPI resolution. **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively (Example: 300,100,500,150)**"
       responses:
         200:
           description: The sign request was executed
@@ -313,11 +313,17 @@ paths:
                     -F tsa_bookmark=uanataca \
                     -F billing_username=billing_user@domain \
                     -F billing_password=z5qNqkfB \
+                    -F reason=Signature test \
+                    -F location='Barcelona, Spain' \
+                    -F npage=2 \
+                    -F otp=123123 \ 
+                    -F metadata='Tm9tYnJlOiBEb2N1bWVudG8gU...' \
+                    -F metadata_oid='1.3.6.1.5.5.7.20' \
+                    -F metadata_enveloped=1 \
                     -F img_bookmark=uanataca \
-                    -F 'reason=Signature test' \
-                    -F 'location=Barcelona, Spain' \
-                    -F 'npage': '2' \
-                    -F 'otp': '123123'
+                    -F img='iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...' \
+                    -F img_size='200,140' \
+                    -F position='300,100,500,150'
         - lang: 'Javascript'
           source: |
                   var formdata = new FormData();
@@ -334,11 +340,17 @@ paths:
                   formdata.append("tsa_bookmark", "uanataca");
                   formdata.append("billing_username", "billing_user@domain");
                   formdata.append("billing_password", "z5qNqkfB");
-                  formdata.append("img_bookmark", "uanataca");
                   formdata.append("reason", "Signature test");
                   formdata.append("location", "Barcelona, Spain");
                   formdata.append("npage", "2");
                   formdata.append("otp", "123123");
+                  formdata.append("metadata", "Tm9tYnJlOiBEb2N1bWVudG8gU...");
+                  formdata.append("metadata_oid", "1.3.6.1.5.5.7.20");
+                  formdata.append("metadata_enveloped", "1");
+                  formdata.append("img_bookmark", "uanataca");
+                  formdata.append("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
+                  formdata.append("img_size", "200,140");
+                  formdata.append("position", "300,100,500,150");
 
                   var requestOptions = {
                     method: 'POST',
@@ -369,11 +381,17 @@ paths:
                   'tsa_bookmark': 'uanataca',
                   'billing_username': 'billing_user@domain',
                   'billing_password': 'z5qNqkfB',
-                  'img_bookmark': 'uanataca',
                   'reason': 'Signature test',
                   'location': 'Barcelona, Spain',
                   'npage': '2',
-                  'otp': '123123'}
+                  'otp': '123123',
+                  'metadata': 'iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...',
+                  'metadata_oid': '1.3.6.1.5.5.7.20',
+                  'metadata_enveloped': '1',
+                  'img_bookmark': 'uanataca',
+                  'img': 'iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...',
+                  'img_size': '200,140',
+                  'position': '300,100,500,150'}
                   files=[
                     ('file_in',('Doc1.pdf',open('sample_folder/document.pdf','rb'),'application/pdf'))
                   ]
@@ -403,11 +421,17 @@ paths:
                   formData.append('tsa_bookmark', 'uanataca');
                   formData.append('billing_username', 'billing_user@domain');
                   formData.append('billing_password', 'z5qNqkfB');
-                  formData.append('img_bookmark', 'uanataca');
                   formData.append('reason', 'Signature test');
                   formData.append('location', 'Barcelona, Spain');
                   formData.append('npage', '2');
                   formData.append('otp', '123123');
+                  formdata.append("metadata", "Tm9tYnJlOiBEb2N1bWVudG8gU...");
+                  formdata.append("metadata_oid", "1.3.6.1.5.5.7.20");
+                  formdata.append("metadata_enveloped", "1");
+                  formdata.append("img_bookmark", "uanataca");
+                  formdata.append("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
+                  formdata.append("img_size", "200,140");
+                  formdata.append("img_bookmark", "300,100,500,150");
 
                   const url = 'https://signbox.developers.uanataca.com/api/sign';
 
@@ -444,11 +468,17 @@ paths:
                   request.AddParameter("tsa_bookmark", "uanataca");
                   request.AddParameter("billing_username", "billing_user@domain");
                   request.AddParameter("billing_password", "z5qNqkfB");
-                  request.AddParameter("img_bookmark", "uanataca");
                   request.AddParameter("reason", "Signature test");
                   request.AddParameter("location", "Barcelona, Spain");
                   request.AddParameter("npage", "2");
                   request.AddParameter("otp", "123123");
+                  request.AddParameter("metadata", "Tm9tYnJlOiBEb2N1bWVudG8gU...");
+                  request.AddParameter("metadata_oid", "1.3.6.1.5.5.7.20");
+                  request.AddParameter("metadata_enveloped", "1");
+                  request.AddParameter("img_bookmark", "uanataca");
+                  request.AddParameter("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
+                  request.AddParameter("img_size", "200,140");
+                  request.AddParameter("img_bookmark", "300,100,500,150");
 
                   IRestResponse response = client.Execute(request);
                   Console.WriteLine(response.Content);
