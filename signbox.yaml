@@ -281,7 +281,8 @@ paths:
           name: position
           type: string
           description: "The image rectangle bottom-left & top-right corner coordinates in pixels corresponding to 72DPI resolution.\n
-                        **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively**"        
+                        **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively**\n\n       
+                        - **If `img_bookmark` is specified, `img` , `img_size` and `position` cannot, since these parameters are included in Optimizer alias.ini file**"
       responses:
         200:
           description: The sign request was executed
