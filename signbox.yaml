@@ -281,7 +281,7 @@ paths:
         - in: formData
           name: position
           type: string
-          description: "The image rectangle bottom-left & top-right corner coordinates in pixels corresponding to 72DPI resolution. **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively (Example: 300,100,500,150)**"
+          description: "The image rectangle bottom-left & top-right corner coordinates in pixels corresponding to 72DPI resolution. **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively.** (Example: 300,100,500,150)"
       responses:
         200:
           description: The sign request was executed
