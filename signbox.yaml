@@ -244,7 +244,7 @@ paths:
           name: npage
           type: string
           default: 0
-          description: "Page number where the image signature is placed. The first page starts in 0\n
+          description:  "Page number where the image signature is placed. The first page starts in 0\n
                         - It is required an `img_bookmark` alias"
         - in: formData
           name: otp
@@ -280,8 +280,7 @@ paths:
         - in: formData
           name: position
           type: string
-          description: "The image rectangle bottom-left & top-right corner coordinates in pixels corresponding to 72DPI resolution.\n
-                        **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively**<br>       
+          description: "The image rectangle bottom-left & top-right corner coordinates in pixels corresponding to 72DPI resolution. **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively**\n
                         - If `img_bookmark` is specified, `img` , `img_size` and `position` cannot, since these parameters are included in Optimizer alias.ini file"
       responses:
         200:
