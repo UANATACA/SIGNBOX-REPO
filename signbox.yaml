@@ -233,11 +233,6 @@ paths:
           description: Billing account password
           required: true
         - in: formData
-          name: img_bookmark
-          type: string
-          description: "Signature image alias name.<br>
-                        It is required to previous create an image template. See <HTML><a href='#section/Configuration/Signature-Image-Configuration'>Image Configuration</a></HTML>"
-        - in: formData
           name: reason
           type: string
           description: Reason about the signature
@@ -256,6 +251,37 @@ paths:
           type: string
           description: "The OTP code previously sent to the user.\n
                         **This parameter is only required and available for specific digital identities**"
+        - in: formData
+          name: metadata
+          type: string
+          description: "Optional metadata information associated to the signed document"
+        - in: formData
+          name: metadata_oid
+          type: string
+          description: "OID identifier associated to the metadata"
+        - in: formData
+          name: metadata_enveloped
+          type: string
+          description: "Set to 0 if metadata is in DER format, or 1 (default) for ASN1 Octet String enveloping"            
+        - in: formData
+          name: img_bookmark
+          type: string
+          description: "Signature image alias name.<br>
+                        It is required to previous create an image template. See <HTML><a href='#section/Configuration/Signature-Image-Configuration'>Image Configuration</a></HTML>"
+        - in: formData
+          name: img
+          type: string
+          description: "Base64 preconverted image string"
+        - in: formData
+          name: img_size
+          type: string
+          description: "The **original** image size in pixels.\n
+                        **Any mismatch will cause wrong adjustments of the image or it would simply not appear.**"
+        - in: formData
+          name: position
+          type: string
+          description: "The image rectangle bottom-left & top-right corner coordinates in pixels corresponding to 72DPI resolution.\n
+                        **For an A4 document page, X-Y values ranges from 0-595 and 0-842 pixels respectively**"        
       responses:
         200:
           description: The sign request was executed
