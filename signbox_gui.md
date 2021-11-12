@@ -121,7 +121,7 @@ Remove image file:
 
 Run:
 
-	docker-compose up -d
+	docker-compose up -d --scale api=4 --scale cryptosvc=8
 
 Check service status:
 
