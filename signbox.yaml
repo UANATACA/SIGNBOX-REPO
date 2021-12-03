@@ -285,7 +285,7 @@ paths:
        - in: formData
           name: paragraph_format
           type: string
-          description: "identifying text with the signer's associated data. See <HTML><a href='https://signbox-uanataca-docs.redoc.ly/#paragraph'>description</a></HTML>"
+          description: "Identifying text with the signer's associated data. See <HTML><a href='https://signbox-uanataca-docs.redoc.ly/#paragraph'>description</a></HTML>"
       responses:
         200:
           description: The sign request was executed
