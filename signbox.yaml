@@ -327,7 +327,8 @@ paths:
                     -F img_bookmark=uanataca \
                     -F img='iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...' \
                     -F img_size='200,140' \
-                    -F position='300,100,500,150'
+                    -F position='300,100,500,150' \
+                    -F paragraph_format='[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]'
         - lang: 'Javascript'
           source: |
                   var formdata = new FormData();
@@ -355,6 +356,7 @@ paths:
                   formdata.append("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
                   formdata.append("img_size", "200,140");
                   formdata.append("position", "300,100,500,150");
+                  formdata.append("paragraph_format", "[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]");
 
                   var requestOptions = {
                     method: 'POST',
@@ -395,7 +397,8 @@ paths:
                   'img_bookmark': 'uanataca',
                   'img': 'iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...',
                   'img_size': '200,140',
-                  'position': '300,100,500,150'}
+                  'position': '300,100,500,150',
+                  'paragraph_format': '[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]'}
                   files=[
                     ('file_in',('Doc1.pdf',open('sample_folder/document.pdf','rb'),'application/pdf'))
                   ]
@@ -436,6 +439,7 @@ paths:
                   formdata.append("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
                   formdata.append("img_size", "200,140");
                   formdata.append("img_bookmark", "300,100,500,150");
+                  formdata.append("paragraph_format", "[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]");
 
                   const url = 'https://signbox.developers.uanataca.com/api/sign';
 
@@ -483,6 +487,7 @@ paths:
                   request.AddParameter("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
                   request.AddParameter("img_size", "200,140");
                   request.AddParameter("img_bookmark", "300,100,500,150");
+                  request.AddParameter("paragraph_format", "[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]");
 
                   IRestResponse response = client.Execute(request);
                   Console.WriteLine(response.Content);
