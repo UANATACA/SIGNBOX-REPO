@@ -331,41 +331,49 @@ paths:
                     -F paragraph_format='[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]'
         - lang: 'Javascript'
           source: |
-                  var formdata = new FormData();
-                  formdata.append("file_in", fileInput.files[0], "sample_folder/document.pdf");
-                  formdata.append("url_in", "http://example.com/document.pdf");
-                  formdata.append("url_out", "https://example.com/result");
-                  formdata.append("urlback", "https://example.com/log");
-                  formdata.append("env", "test");
-                  formdata.append("format", "pades");
-                  formdata.append("username", "1122338");
-                  formdata.append("password", "7T8xdGBN");
-                  formdata.append("pin", "w98nZZDR");
-                  formdata.append("level", "T");
-                  formdata.append("tsa_bookmark", "uanataca");
-                  formdata.append("billing_username", "billing_user@domain");
-                  formdata.append("billing_password", "z5qNqkfB");
-                  formdata.append("reason", "Signature test");
-                  formdata.append("location", "Barcelona, Spain");
-                  formdata.append("npage", "2");
-                  formdata.append("otp", "123123");
+                  import fetch from "node-fetch";
+                  import FormData from "form-data";
+                  import fs from "fs";
+
+                  var formData = new FormData();
+
+                  formData.append('file_in', fs.createReadStream('sample_folder/document.pdf'));
+                  formData.append('url_in', 'http://example.com/document.pdf');
+                  formData.append('url_out', 'https://example.com/result');
+                  formData.append('urlback', 'https://example.com/log');
+                  formData.append('env', 'test');
+                  formData.append('format', 'pades');
+                  formData.append('username', '1122338');
+                  formData.append('password', '7T8xdGBN');
+                  formData.append('pin', 'w98nZZDR');
+                  formData.append('level', 'T');
+                  formData.append('tsa_bookmark', 'uanataca');
+                  formData.append('billing_username', 'billing_user@domain');
+                  formData.append('billing_password', 'z5qNqkfB');
+                  formData.append('reason', 'Signature test');
+                  formData.append('location', 'Barcelona, Spain');
+                  formData.append('npage', '2');
+                  formData.append('otp', '123123');
                   formdata.append("metadata", "Tm9tYnJlOiBEb2N1bWVudG8gU...");
                   formdata.append("metadata_oid", "1.3.6.1.5.5.7.20");
                   formdata.append("metadata_enveloped", "1");
                   formdata.append("img_bookmark", "uanataca");
                   formdata.append("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
                   formdata.append("img_size", "200,140");
-                  formdata.append("position", "300,100,500,150");
+                  formdata.append("img_bookmark", "300,100,500,150");
                   formdata.append("paragraph_format", "[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]");
 
-                  var requestOptions = {
+                  var url = 'https://signbox.developers.uanataca.com/api/sign';
+
+                  var options = {
                     method: 'POST',
-                    headers: myHeaders,
-                    body: formdata,
+                    body: formData,
                     redirect: 'follow'
                   };
 
-                  fetch("https://signbox.developers.uanataca.com/api/sign", requestOptions)
+                  options.body = formData;
+
+                  fetch(url, options)
                     .then(response => response.text())
                     .then(result => console.log(result))
                     .catch(error => console.log('error', error));
@@ -410,10 +418,11 @@ paths:
                   print(response.text)
         - lang: 'Node.js'
           source: |
-                  const fs = require('fs');
-                  const FormData = require('form-data');
-                  const fetch = require('node-fetch');
-                  const formData = new FormData();
+                  import fetch from "node-fetch";
+                  import FormData from "form-data";
+                  import fs from "fs";
+
+                  var formData = new FormData();
 
                   formData.append('file_in', fs.createReadStream('sample_folder/document.pdf'));
                   formData.append('url_in', 'http://example.com/document.pdf');
@@ -441,22 +450,20 @@ paths:
                   formdata.append("img_bookmark", "300,100,500,150");
                   formdata.append("paragraph_format", "[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]");
 
-                  const url = 'https://signbox.developers.uanataca.com/api/sign';
+                  var url = 'https://signbox.developers.uanataca.com/api/sign';
 
-                  const options = {
+                  var options = {
                     method: 'POST',
-                    headers: {
-                      Accept: 'text/plain',
-                      'Content-Type': 'multipart/form-data; boundary=---011000010111000001101001'
-                    }
+                    body: formData,
+                    redirect: 'follow'
                   };
 
                   options.body = formData;
 
                   fetch(url, options)
-                    .then(res => res.json())
-                    .then(json => console.log(json))
-                    .catch(err => console.error('error:' + err));
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
         - lang: 'C#'
           source: |
                   var client = new RestClient("https://signbox.developers.uanataca.com/api/sign");
