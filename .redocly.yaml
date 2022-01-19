@@ -7,10 +7,10 @@ referenceDocs:
   generateCodeSamples:
     languages:
       - lang: "curl"
-      - lang: "JavaScript"
       - lang: "Python"
       - lang: "Node.js"
       - lang: "C#"
+      - lang: "Java"
   hideRequestPayloadSample: true  
   theme:
     spacing:
