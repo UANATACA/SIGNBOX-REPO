@@ -87,17 +87,6 @@ paths:
         - lang: 'curl'
           source: |
                   curl -i -X GET 'https://signbox.developers.uanataca.com/api/echo?message=HelloWorld'
-        - lang: 'JavaScript'
-          source: |
-                  const query = new URLSearchParams({message: 'HelloWorld'}).toString();
-
-                  const resp = await fetch(
-                    'https://signbox.developers.uanataca.com/api/echo?' + query,
-                    {method: 'GET'}
-                  );
-
-                  const data = await resp.text();
-                  console.log(data);
         - lang: 'Python'
           source: |
                   import requests
@@ -329,54 +318,6 @@ paths:
                     -F img_size='200,140' \
                     -F position='300,100,500,150' \
                     -F paragraph_format='[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]'
-        - lang: 'Javascript'
-          source: |
-                  import fetch from "node-fetch";
-                  import FormData from "form-data";
-                  import fs from "fs";
-
-                  var formData = new FormData();
-
-                  formData.append('file_in', fs.createReadStream('sample_folder/document.pdf'));
-                  formData.append('url_in', 'http://example.com/document.pdf');
-                  formData.append('url_out', 'https://example.com/result');
-                  formData.append('urlback', 'https://example.com/log');
-                  formData.append('env', 'test');
-                  formData.append('format', 'pades');
-                  formData.append('username', '1122338');
-                  formData.append('password', '7T8xdGBN');
-                  formData.append('pin', 'w98nZZDR');
-                  formData.append('level', 'T');
-                  formData.append('tsa_bookmark', 'uanataca');
-                  formData.append('billing_username', 'billing_user@domain');
-                  formData.append('billing_password', 'z5qNqkfB');
-                  formData.append('reason', 'Signature test');
-                  formData.append('location', 'Barcelona, Spain');
-                  formData.append('npage', '2');
-                  formData.append('otp', '123123');
-                  formdata.append("metadata", "Tm9tYnJlOiBEb2N1bWVudG8gU...");
-                  formdata.append("metadata_oid", "1.3.6.1.5.5.7.20");
-                  formdata.append("metadata_enveloped", "1");
-                  formdata.append("img_bookmark", "uanataca");
-                  formdata.append("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
-                  formdata.append("img_size", "200,140");
-                  formdata.append("img_bookmark", "300,100,500,150");
-                  formdata.append("paragraph_format", "[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]");
-
-                  var url = 'https://signbox.developers.uanataca.com/api/sign';
-
-                  var options = {
-                    method: 'POST',
-                    body: formData,
-                    redirect: 'follow'
-                  };
-
-                  options.body = formData;
-
-                  fetch(url, options)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
         - lang: 'Python'
           source: |
                   import requests
@@ -466,38 +407,58 @@ paths:
                     .catch(error => console.log('error', error));
         - lang: 'C#'
           source: |
-                  var client = new RestClient("https://signbox.developers.uanataca.com/api/sign");
-                  client.Timeout = -1;
-                  var request = new RestRequest(Method.POST);
-                  request.AddHeader("content-type", "multipart/form-data; boundary=----011000010111000001101001");
-                  request.AddFile("file_in", "sample_folder/document.pdf");
-                  request.AddParameter("url_in", "http://uanataca.samplepage.com/original.pdf");
-                  request.AddParameter("url_out", "https://uanataca.samplepage.com/signed.pdf");
-                  request.AddParameter("urlback", "https://example.com/log");
-                  request.AddParameter("env", "test");
-                  request.AddParameter("format", "pades");
-                  request.AddParameter("username", "1122338");
-                  request.AddParameter("password", "7T8xdGBN");
-                  request.AddParameter("pin", "w98nZZDR");
-                  request.AddParameter("level", "T");
-                  request.AddParameter("tsa_bookmark", "uanataca");
-                  request.AddParameter("billing_username", "billing_user@domain");
-                  request.AddParameter("billing_password", "z5qNqkfB");
-                  request.AddParameter("reason", "Signature test");
-                  request.AddParameter("location", "Barcelona, Spain");
-                  request.AddParameter("npage", "2");
-                  request.AddParameter("otp", "123123");
-                  request.AddParameter("metadata", "Tm9tYnJlOiBEb2N1bWVudG8gU...");
-                  request.AddParameter("metadata_oid", "1.3.6.1.5.5.7.20");
-                  request.AddParameter("metadata_enveloped", "1");
-                  request.AddParameter("img_bookmark", "uanataca");
-                  request.AddParameter("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
-                  request.AddParameter("img_size", "200,140");
-                  request.AddParameter("img_bookmark", "300,100,500,150");
-                  request.AddParameter("paragraph_format", "[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]");
+                  using System;
+                  using System.Threading.Tasks;
+                  using RestSharp;
 
-                  IRestResponse response = client.Execute(request);
-                  Console.WriteLine(response.Content);
+                  public class Program
+                  {
+                    public static Task Main(string[] args)
+                      {
+                          var client = new RestClient("https://signbox.developers.uanataca.com/api/sign");
+                          client.Timeout = -1;
+
+                          string docPath = "./docs/sample.pdf"; // path to image
+
+                          var request = new RestRequest(Method.POST);
+                          request.AlwaysMultipartFormData = true;
+                          request.AddHeader("content-type", "multipart/form-data");
+
+                      //	file_in and url_in cannot be sent simultaneously
+                          request.AddParameter("url_in", "https://uanataca.pythonanywhere.com/sample.pdf");
+                          request.AddFile("file_in", docPath, "application/pdf");
+
+                          request.AddParameter("url_in", "http://uanataca.samplepage.com/original.pdf");
+                          request.AddParameter("url_out", "https://uanataca.samplepage.com/signed.pdf");
+                          request.AddParameter("urlback", "https://example.com/log");
+                          request.AddParameter("env", "test");
+                          request.AddParameter("format", "pades");
+                          request.AddParameter("username", "1122338");
+                          request.AddParameter("password", "7T8xdGBN");
+                          request.AddParameter("pin", "w98nZZDR");
+                          request.AddParameter("level", "T");
+                          request.AddParameter("tsa_bookmark", "uanataca");
+                          request.AddParameter("billing_username", "billing_user@domain");
+                          request.AddParameter("billing_password", "z5qNqkfB");
+                          request.AddParameter("reason", "Signature test");
+                          request.AddParameter("location", "Barcelona, Spain");
+                          request.AddParameter("npage", "2");
+                          request.AddParameter("otp", "123123");
+                          request.AddParameter("metadata", "Tm9tYnJlOiBEb2N1bWVudG8gU...");
+                          request.AddParameter("metadata_oid", "1.3.6.1.5.5.7.20");
+                          request.AddParameter("metadata_enveloped", "1");
+                          request.AddParameter("img_bookmark", "uanataca");
+                          request.AddParameter("img", "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAY...");
+                          request.AddParameter("img_size", "200,140");
+                          request.AddParameter("img_bookmark", "300,100,500,150");
+                          request.AddParameter("paragraph_format", "[{ "font" : ["Universal-Bold",15],"align":"right","data_format" : { "timezone":"Europe/Madrid", "strtime":"%d/%m/%Y %H:%M:%S%z"},"format": ["Firmado por:","$(CN)s","$(serialNumber)s","Fecha: $(date)s"]}]");
+
+                          IRestResponse response = client.Execute(request);
+
+                          Console.WriteLine(response.Content);
+                          return Task.CompletedTask;
+                      }
+                  }
 #############
   /api/job/{id}:
     get: 
@@ -540,15 +501,6 @@ paths:
         - lang: 'curl'
           source: |
                   curl -i -X GET 'https://signbox.developers.uanataca.com/api/job/14.1'
-        - lang: 'JavaScript'
-          source: |
-                  const resp = await fetch(
-                    'https://signbox.developers.uanataca.com/api/job/14.1',
-                    {method: 'GET'}
-                  );
-
-                  const data = await resp.text();
-                  console.log(data);
         - lang: 'Python'
           source: |
                   import requests
@@ -632,15 +584,6 @@ paths:
         - lang: 'curl'
           source: |
                   curl -i -X GET 'https://signbox.developers.uanataca.com/api/result/14.1'
-        - lang: 'JavaScript'
-          source: |
-                  const resp = await fetch(
-                    'https://signbox.developers.uanataca.com/api/result/14.1',
-                    {method: 'GET'}
-                  );
-
-                  const data = await resp.text();
-                  console.log(data);
         - lang: 'Python'
           source: |
                   import requests
@@ -730,25 +673,6 @@ paths:
                     -F password=7T8xdGBN \
                     -F username=1122338 \
                     -F uses=10
-        - lang: 'JavaScript'
-          source: |
-                  const form = new FormData();
-                  form.append("env", "prod");
-                  form.append("username", "1122338");
-                  form.append("password", "7T8xdGBN");
-                  form.append("uses", "10");
-
-                  const resp = await fetch(
-                    'https://signbox.developers.uanataca.com/api/generate_otp',
-                    {
-                      method: 'POST',
-                      headers: {},
-                      body: form
-                    }
-                  );
-
-                  const data = await resp.text();
-                  console.log(data);
         - lang: 'Python'
           source: |
                   import requests
