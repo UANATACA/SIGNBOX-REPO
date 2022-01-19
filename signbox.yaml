@@ -679,18 +679,18 @@ paths:
 
                   url = "https://signbox.developers.uanataca.com/api/generate_otp"
 
-                  payload={'username': '1122338',
-                  'password': '7T8xdGBN'}
-                  files=[
+                  payload = {'env': 'prod',
+                            'username': '1122338',
+                            'password': '7T8xdGBN',
+                            'uses': 10}
 
-                  ]
                   headers = {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                  'Content-Type': 'multipart/form-data'
                   }
 
-                  response = requests.request("POST", url, headers=headers, data=payload, files=files)
+                  response = requests.request("POST", url, headers=headers, data=payload)
 
-                  print(response.text)               
+                  print(response.text)       
         - lang: 'Node.js'
           source: |
                   import fetch from "node-fetch";
