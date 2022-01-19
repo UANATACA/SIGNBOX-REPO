@@ -693,26 +693,31 @@ paths:
                   print(response.text)               
         - lang: 'Node.js'
           source: |
-                  const FormData = require('form-data');
                   import fetch from "node-fetch";
+                  import FormData from "form-data";
+                  import fs from "fs";
 
-                  const form = new FormData();
+                  var formData = new FormData();
+
                   form.append('env','prod');
                   form.append('username','1122338');
                   form.append('password','7T8xdGBN');
                   form.append('uses','10');
 
-                  const resp = await fetch(
-                    'https://signbox.developers.uanataca.com/api/generate_otp',
-                    {
-                      method: 'POST',
-                      headers: {},
-                      body: form
-                    }
-                  );
+                  var url = 'https://signbox.developers.uanataca.com/api/generate_otp';
 
-                  const data = await resp.text();
-                  console.log(data);
+                  var options = {
+                    method: 'POST',
+                    body: formData,
+                    redirect: 'follow'
+                  };
+
+                  options.body = formData;
+
+                  fetch(url, options)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
         - lang: 'C#'
           source: |
                   using System;
