@@ -114,7 +114,7 @@ paths:
                   print(data)                  
         - lang: 'Node.js'
           source: |
-                  const fetch = require('node-fetch');
+                  import fetch from "node-fetch";
 
                   const query = new URLSearchParams({message: 'HelloWorld'}).toString();
 
@@ -561,7 +561,7 @@ paths:
                   print(data)                 
         - lang: 'Node.js'
           source: |
-                  const fetch = require('node-fetch');
+                  import fetch from "node-fetch";
 
                   const resp = await fetch(
                     'https://signbox.developers.uanataca.com/api/job/14.1',
@@ -653,7 +653,7 @@ paths:
                   print(data)                 
         - lang: 'Node.js'
           source: |
-                  const fetch = require('node-fetch');
+                  import fetch from "node-fetch";
 
                   const resp = await fetch(
                     'https://signbox.developers.uanataca.com/api/result/14.1',
@@ -770,7 +770,7 @@ paths:
         - lang: 'Node.js'
           source: |
                   const FormData = require('form-data');
-                  const fetch = require('node-fetch');
+                  import fetch from "node-fetch";
 
                   const form = new FormData();
                   form.append('env','prod');
