@@ -46,7 +46,7 @@ See the configuration description in:<br>
 
 This configuration requires a server with Linux CentOS operating system.
 
-<a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><img src="https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/test/img4.png"></a><a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><b>&nbsp;Watch on video!</b></a>
+<a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><img src="https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/img4.png"></a><a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><b>&nbsp;Watch on video!</b></a>
 
 
 > STEP 1: Install Docker and Docker-Compose.
