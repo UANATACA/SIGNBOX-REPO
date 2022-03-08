@@ -18,7 +18,7 @@ The system provides options for several electronic signature formats including t
 </div>
 <br></br>
 
-![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/signbox_hiw.png)
+![img](https://raw.githubusercontent.com/UANATACA/SIGNBOXV2-REPO/main/img/signbox_hiw.png)
 
 
 # Configuration
@@ -75,7 +75,7 @@ Run the following commands in this order.
 Run command **docker-compose version** to check the installation. The outcome should show this information:
 
 
-![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/signbox-docker1.png) 
+![img](https://raw.githubusercontent.com/UANATACA/SIGNBOXV2-REPO/main/img/signbox-docker1.png) 
 
 </br>
 
@@ -87,7 +87,7 @@ Move SignBox Optimizer folder to the path **/opt** in the server.
 
 The outcome should look like this:
 
-![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/signbox-docker2.png)
+![img](https://raw.githubusercontent.com/UANATACA/SIGNBOXV2-REPO/main/img/signbox-docker2.png)
 
 </br>
 
@@ -99,7 +99,7 @@ In high performance environments with a pool of SignBox Optimizer, service setti
 
 Docker-compose.yml settings file:
 
-![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-docker3.png?raw=true)
+![img](https://github.com/UANATACA/SIGNBOXV2-REPO/blob/main/img/signbox-docker3.png?raw=true)
 
 </br>
 
@@ -159,7 +159,7 @@ The network settings are configured on the file `ifcfg-ens160`, which can be fou
 
 Example:
 
-![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-docker5.png?raw=true)
+![img](https://github.com/UANATACA/SIGNBOXV2-REPO/blob/main/img/signbox-docker5.png?raw=true)
 
 Restart network services with command:
 
@@ -173,7 +173,7 @@ It is possible to include url exceptions for services that don't use proxy netwo
 
 Example:
 
-![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/c4c4b74b4c4183cee57dc9be3a9eaf159ee2f4a1/img/signbox-ova1.png)
+![img](https://raw.githubusercontent.com/UANATACA/SIGNBOXV2-REPO/c4c4b74b4c4183cee57dc9be3a9eaf159ee2f4a1/img/signbox-ova1.png)
 </br>
 
 
@@ -230,7 +230,7 @@ Image .argb files must be locateed in the same **/img** directory where `alias.i
 
 This is how the `alias.ini` file should look like (three different images are stored in this example):
 
-![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-image.png?raw=true)
+![img](https://github.com/UANATACA/SIGNBOXV2-REPO/blob/main/img/signbox-image.png?raw=true)
 
    
 <div id="paragraph" style="padding-top: 60px;"><h2>Paragraph format<h2></div>
@@ -278,7 +278,7 @@ Example:
 
 From this configuration, the image paragraph should look like as shown below:
 
-![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/paragraph_format.JPG)
+![img](https://raw.githubusercontent.com/UANATACA/SIGNBOXV2-REPO/main/img/paragraph_format.JPG)
 
 
 ## ARGB Tool
