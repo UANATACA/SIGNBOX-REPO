@@ -21,6 +21,20 @@ The system provides options for several electronic signature formats including t
 ![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/signbox_hiw.png)
 
 
+# Test Environment
+
+
+For testing purposes, Uanataca provides integrators of a pre-configured test-mode SignBox Optimizer accessible at the following URL:
+
+</br>
+
+	https://signbox.developers.uanataca.com
+
+</br>
+
+Want to configure your own test-mode Optimizer? Find instructions in the <a href='#section/Configuration'>configuration</a> section.
+
+
 # Configuration
 
 SignBox Optimizer can be supplied as a **Docker** or as a **Virtual Machine** image.
@@ -412,11 +426,15 @@ where {filename} is the filename of the document to be signed, and {host} is the
 
 # Logs
 
-Service logs files are stored in a local folder in SignBox Optimizer.
+Service logs files are stored in a local folder in OVA or stored inside the containers in Docker.
 
-**/opt/signbox_optimizer/logs** or custom mapped volume (Docker) 
+To read logs in Docker version of SignBox Optimizer run this command:
 
-**/var/log/de** (Virtual Machine)
+	docker-compose logs
+
+To read logs in OVA version of SignBox Optimizer you can find logfile in this path:
+
+**/var/log/de**
 
 
 
