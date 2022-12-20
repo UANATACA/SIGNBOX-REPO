@@ -280,9 +280,9 @@ The signature image permits the addition of identifying text with the signer's a
 * **$(S)s** : stateOrProvinceName
 * **$(OU)s** : organizationalUnitName
 * **$(E)s** : email
-* **$(Email)s** : email includen in the Subject Alternative Name
+* **$(Email)s** : email included in the Subject Alternative Name
 * **$(Issuer)s** : Certificate CA Issuer Common Name 
-* **$(date)s** : Date and time of the signature. Compliant to ISO 860 standard.
+* **$(date)s** : Date and time of the signature. Compliant to ISO 8601 standard.
 * **$(reason)s** : “bit4-reason” parameter value
 * **$(location)s** : “bit4-location” parameter value
 
