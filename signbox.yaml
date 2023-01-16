@@ -171,8 +171,8 @@ paths:
         - in: formData
           name: env
           type: string
-          enum: [prod, test]
-          description: Reference environment for testing or production
+          enum: [prod, sandbox]
+          description: Reference environment for sandbox or production
           required: true
         - in: formData
           name: format
@@ -297,7 +297,7 @@ paths:
                     -F url_in=http://example.com/document.pdf \
                     -F url_out=https://example.com/result \
                     -F urlback=https://example.com/log \
-                    -F env=test \
+                    -F env=sandbox \
                     -F format=pades \
                     -F username=1122338 \
                     -F password=7T8xdGBN \
@@ -327,7 +327,7 @@ paths:
                   payload={'url_in': 'http://example.com/document.pdf',
                   'url_out': 'https://example.com/result',
                   'urlback': 'https://example.com/log',
-                  'env': 'test',
+                  'env': 'sandbox',
                   'format': 'pades',
                   'username': '1122338',
                   'password': '7T8xdGBN',
@@ -369,7 +369,7 @@ paths:
                   formData.append('url_in', 'http://example.com/document.pdf');
                   formData.append('url_out', 'https://example.com/result');
                   formData.append('urlback', 'https://example.com/log');
-                  formData.append('env', 'test');
+                  formData.append('env', 'sandbox');
                   formData.append('format', 'pades');
                   formData.append('username', '1122338');
                   formData.append('password', '7T8xdGBN');
@@ -431,7 +431,7 @@ paths:
                           request.AddParameter("url_in", "http://uanataca.samplepage.com/original.pdf");
                           request.AddParameter("url_out", "https://uanataca.samplepage.com/signed.pdf");
                           request.AddParameter("urlback", "https://example.com/log");
-                          request.AddParameter("env", "test");
+                          request.AddParameter("env", "sandbox");
                           request.AddParameter("format", "pades");
                           request.AddParameter("username", "1122338");
                           request.AddParameter("password", "7T8xdGBN");
@@ -653,9 +653,9 @@ paths:
         type: number
       - in: formData
         name: env
-        description: Reference environment for testing or production
+        description: Reference environment for sandbox or production
         type: string
-        enum: [prod, test]     
+        enum: [prod, sandbox]     
         required: true
       responses:
         200:

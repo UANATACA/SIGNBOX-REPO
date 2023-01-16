@@ -21,7 +21,7 @@ The system provides options for several electronic signature formats including t
 ![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/signbox_hiw.png)
 
 
-# Test Environment
+# Sandbox Environment
 
 
 For testing purposes, Uanataca provides integrators of a pre-configured test-mode SignBox Optimizer accessible at the following URL:
