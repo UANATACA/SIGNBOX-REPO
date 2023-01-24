@@ -202,8 +202,7 @@ paths:
           name: level
           type: string
           default: BES
-          description: "Specify the level of the signature. Keep in mind that LTVLITE is an LTV signature lighter and efficient in comparison with the standard LTV level.\n
-                        The allowed values are: \n
+          description: "Specify the level of the signature, must consider that LTVLITE is a LTV signature lighter and efficient in comparison with the standard LTV level.\nThe allowed values are: \n
                         - `BES`, `T`, `LTV`, `LTVLITE` for pades\n
                         - `BES`, `T`, `EPES`, `XL` for xades\n
                         - `BES`, `T`, `EPES` for cades"
