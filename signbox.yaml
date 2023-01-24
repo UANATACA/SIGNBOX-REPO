@@ -203,9 +203,10 @@ paths:
           type: string
           default: BES
           description: "Specify the level of the signature. The allowed values are: \n
-                        - `BES`, `T`, `LTV` for pades\n
+                        - `BES`, `T`, `LTV`, `LTVLITE` for pades\n
                         - `BES`, `T`, `EPES`, `XL` for xades\n
-                        - `BES`, `T`, `EPES` for cades"
+                        - `BES`, `T`, `EPES` for cades\n
+                        Note: LTVLITE is an LTV signature lighter and efficient in comparison with the standard LTV level"
         - in: formData
           name: tsa_bookmark
           type: string
