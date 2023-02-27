@@ -424,6 +424,64 @@ where {filename} is the filename of the document to be signed, and {host} is the
 	
 	?>
 
+## Rootstore configuration
+
+As a requirement for LTV/LTVLITE signature level, we must add to the optimizer every chain of trust for each certificate that is involved in the signature.
+
+In case that you don't make use of LTV/LVTLITE signature level, this process is NOT necessary.
+
+This process vary depending on the selected optimizer install method.
+
+Every certificate introduced in the optimizer regarding the rootstore needs to be formatted as a PEM file and introduced in a specific folder.
+Below an example of the general structure that is needed.
+Note: El número de líneas bajo el encabezamiento en el ejemplo no es representativo de un certificado real.
+
+```
+-----BEGIN CERTIFICATE-----
+MIIIWjCCBkKgAwIBAgIIICfKLtFjrRMwDQYJKoZIhvcNAQELBQAwgbkxCzAJBgNV
+BAYTAkVTMUQwQgYDVQQHDDtCYXJjZWxvbmEgKHNlZSBjdXJyZW50IGFkZHJlc3Mg
+YXQgd3d3LnVhbmF0YWNhLmNvbS9hZGRyZXNzKTEWMBQGA1UECgwNVUFOQVRBQ0Eg
+Uy5BLjEVMBMGA1UECwwMVFNQLVVBTkFUQUNBMRswGQYDVQQDDBJVQU5BVEFDQSBS
+K+0fx83luCN81YLsUpdpc3e0URG7eDMKNG54WvtW
+-----END CERTIFICATE-----
+```
+
+### Docker
+
+> STEP 1: Load certificates in the optimizer
+
+Load the PEM files in the following path:
+
+	/signbox_optimizer/etc/trusted_roots/certs
+
+>STEP 2: Restart the service
+
+After all the desired certificates have been loaded into the optimizer, we must fully restart the services with
+
+	docker compose down
+
+Followed by
+
+	docker compose up -d
+
+### OVA
+
+> STEP 1: Load certificates in the optimizer
+
+Load the PEM files in the following path:
+
+	/opt/bit4id/de/etc/trusted_roots/certs
+
+>STEP 2: Restart the service
+
+After all the desired certificates have been loaded into the optimizer, we must fully restart the services with
+
+	systemctl stop bit4-de.api.service bit4-de.cryptosvc.service nginx
+
+Followed by
+
+	systemctl start bit4-de.api.service bit4-de.cryptosvc.service nginx
+
 # Logs
 
 Service logs files are stored in a local folder in OVA or stored inside the containers in Docker.
