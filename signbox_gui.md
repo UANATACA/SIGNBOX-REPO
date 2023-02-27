@@ -434,6 +434,7 @@ This process vary depending on the selected optimizer install method.
 
 Every certificate introduced in the optimizer regarding the rootstore needs to be formatted as a PEM file and introduced in a specific folder.
 Below an example of the general structure that is needed.
+
 Note: Number of lines below the header are not representative of a real certificate.
 
 ```
