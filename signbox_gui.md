@@ -434,7 +434,7 @@ This process vary depending on the selected optimizer install method.
 
 Every certificate introduced in the optimizer regarding the rootstore needs to be formatted as a PEM file and introduced in a specific folder.
 Below an example of the general structure that is needed.
-Note: El número de líneas bajo el encabezamiento en el ejemplo no es representativo de un certificado real.
+Note: Number of lines below the header are not representative of a real certificate.
 
 ```
 -----BEGIN CERTIFICATE-----
@@ -446,11 +446,12 @@ K+0fx83luCN81YLsUpdpc3e0URG7eDMKNG54WvtW
 -----END CERTIFICATE-----
 ```
 
-### Docker
+### *Docker*
+
 
 > STEP 1: Load certificates in the optimizer
 
-Load the PEM files in the following path:
+Load the PEM files in the following path or your mapped volume:
 
 	/signbox_optimizer/etc/trusted_roots/certs
 
@@ -464,7 +465,8 @@ Followed by
 
 	docker compose up -d
 
-### OVA
+### *OVA*
+
 
 > STEP 1: Load certificates in the optimizer
 
