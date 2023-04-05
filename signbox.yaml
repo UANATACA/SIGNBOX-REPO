@@ -210,7 +210,7 @@ paths:
           name: identifier
           type: string
           enum: [DS0, DS1]
-          description: "Location of the token. \n If the certificate used is a renewed certificate use DS1"
+          description: "Location of the token. If the certificate used is a renewed certificate use DS1"
         - in: formData
           name: tsa_bookmark
           type: string
