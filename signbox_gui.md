@@ -59,7 +59,9 @@ See the configuration description in:<br>
 
 
 This configuration requires a server with a Linux operating system.
+
 The commands show belown are suitable for CentOS. Each Linux distribution will require it's own commands.
+
 <a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><img src="https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/img4.png"></a><a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><b>&nbsp;Watch on video!</b></a>
 
 
