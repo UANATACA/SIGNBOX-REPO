@@ -37,19 +37,19 @@ referenceDocs:
     typography:
       fontsize:  '14px'     # Tamaño de fuente párrafo regular
       fontFamily: 'Lato'    # Tipografía párrafo regular
-      fontWeightRegular: 400 
+      fontWeightRegular: '400' 
       heading1:
         fontSize: '1,8em'   # Tamaño de títulos categoría 1 
-        fontWeight: 600     # Grosor de títulos categoría 1 
+        fontWeight: '600'     # Grosor de títulos categoría 1 
         fontFamily: 'Lato'  # Fuente de títulos categoría 1 
         lineHeight: '3em'   # Altura de fuente párrafo regular
       heading2:
         fontSize: '1,4em'
-        fontWeight: 400
+        fontWeight: '400'
         fontFamily: 'Lato'
       heading3:
         fontSize: '1,27em'
-        fontWeight: 200
+        fontWeight: '200'
         fontFamily: 'Lato'
       rightPanelHeading:
         fontFamily: 'Lato'
@@ -72,9 +72,9 @@ referenceDocs:
       code:
         fontSize: '12px'
         fontFamily: 'Courier, monospace'
-        fontWeight: 400
-        color: '#E20D1B'
-        backgroundColor: '#DFDFDF'
+        fontWeight: '400'
+        color: '#62829c'
+        backgroundColor: '#62829c'
     menu:
       width: '260px'
       backgroundColor: '#F8F8F8'
