@@ -58,38 +58,29 @@ See the configuration description in:<br>
 ## SignBox Optimizer on Docker
 
 
-This configuration requires a server with Linux CentOS operating system.
-
+This configuration requires a server with a Linux operating system.
+The commands show belown are suitable for CentOS. Each Linux distribution will require it's own commands.
 <a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><img src="https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/img4.png"></a><a href="#section/Video-tutorials/Docker-Optimizer-Configuration"><b>&nbsp;Watch on video!</b></a>
 
 
 > STEP 1: Install Docker and Docker-Compose.
 
-*Docker*
+*Docker and Docker-Compose*
 
 Run the following commands in this order.
 
-	sudo yum update -y
-	yum install -y yum-utils device-mapper-persistent-data lvm2
-	yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-	sudo yum install -y docker-ce docker-ce-cli containerd.io
+	sudo yum install -y yum-utils
+
+	sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+	sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+	
 	sudo systemctl start docker
 
 
-
-*Docker-Compose*
-
-Run the following commands in this order.
-
-
-	sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-	chmod +x /usr/local/bin/docker-compose
-
-
-Run command **docker-compose version** to check the installation. The outcome should show this information:
-
-
-![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/main/img/signbox-docker1.png) 
+Run command **sudo docker run hello-world** to check the installation.
 
 </br>
 
