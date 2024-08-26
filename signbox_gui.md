@@ -514,5 +514,3 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
 </figure>
 
 <div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>
-
-# Error codes
