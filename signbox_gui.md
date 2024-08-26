@@ -517,3 +517,20 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
 
 # Error codes
 
+{% table %}
+* First Heading
+* Second Heading
+---
+* Cell **content**.
+* _More_ cell content.
+---
+*
+	Multi-line
+	content is much
+	easier!
+*
+	Even Markdoc tags!
+	{% admonition type="info" %}
+	Neat!
+	{% /admonition %}
+{% /table %}
