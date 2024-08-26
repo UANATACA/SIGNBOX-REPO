@@ -517,10 +517,3 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
 
 # Error codes
 
-{% table %}
-  * Heading 1 {% width="20%" %}
-  * Heading 2
-  ---
-  * First cell content
-  * Second cell content
-{% /table %}
