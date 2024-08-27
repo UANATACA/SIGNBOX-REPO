@@ -514,3 +514,26 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
 </figure>
 
 <div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message/Detail</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Your account has been updated.</td>
+      <td>The details were modified by the user.</td>
+    </tr>
+    <tr>
+      <td>Payment failed.</td>
+      <td>Insufficient funds in the account.</td>
+    </tr>
+    <tr>
+      <td>Access denied.</td>
+      <td>User does not have the necessary permissions.</td>
+    </tr>
+  </tbody>
+</table>
