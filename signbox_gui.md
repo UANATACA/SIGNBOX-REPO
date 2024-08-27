@@ -515,8 +515,17 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
 
 <div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>
 
+<style>
+  table, th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    border-collapse: collapse;
+    text-align: left;
+  }
+</style>
+
 # Error Codes
-<table>
+<table style>
   <thead>
     <tr>
       <th>Message</th>
