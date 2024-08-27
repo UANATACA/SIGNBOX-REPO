@@ -513,8 +513,6 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
   <iframe width="560" height="315" src="https://www.youtube.com/embed/WbfeRqXPXV0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </figure>
 
-<div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>
-
 # Error Codes
 <table>
   <thead>
@@ -530,3 +528,6 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
     </tr>
   </tbody>
 </table>
+
+<div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>
+
