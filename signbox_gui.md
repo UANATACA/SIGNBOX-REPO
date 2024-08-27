@@ -513,21 +513,7 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
   <iframe width="560" height="315" src="https://www.youtube.com/embed/WbfeRqXPXV0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </figure>
 
-# Error Codes
-<table id="error-codes">
-  <thead>
-    <tr>
-      <th>Message</th>
-      <th>Reason</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Error: Token not found</td>
-      <td>Wrong signing credentials</td>
-    </tr>
-  </tbody>
-</table>
+
 
 <div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>
 
