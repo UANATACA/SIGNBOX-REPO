@@ -519,22 +519,14 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
 <table>
   <thead>
     <tr>
-      <th>Message/Detail</th>
+      <th>Message</th>
       <th>Reason</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Your account has been updated.</td>
-      <td>The details were modified by the user.</td>
-    </tr>
-    <tr>
-      <td>Payment failed.</td>
-      <td>Insufficient funds in the account.</td>
-    </tr>
-    <tr>
-      <td>Access denied.</td>
-      <td>User does not have the necessary permissions.</td>
+      <td>Error: Token not found</td>
+      <td>Wrong signing credentials</td>
     </tr>
   </tbody>
 </table>
