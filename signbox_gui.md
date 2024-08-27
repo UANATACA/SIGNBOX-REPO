@@ -514,7 +514,7 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
 </figure>
 
 # Error Codes
-<table>
+<table id="error-codes">
   <thead>
     <tr>
       <th>Message</th>
