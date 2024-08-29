@@ -513,7 +513,76 @@ The Docker Optimizer configuration requires a SignBox Optimizer image package an
   <iframe width="560" height="315" src="https://www.youtube.com/embed/WbfeRqXPXV0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </figure>
 
-
+<table id="error-codes" ">
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ProcessTerminated: process ended with exit code X <put_remote_file('',)> </td>
+      <td>Webhook malfunctioning</td>
+    </tr>
+    <tr>
+      <td>Token not found </td>
+      <td>Non existent certificate</td>
+    </tr>
+	<tr>
+      <td>Invalid credentials</td>
+      <td>Incorrect credentials</td>
+    </tr>
+	<tr>
+      <td>PasswordProtected</td>
+      <td>Input PDF protected with password</td>
+    </tr>
+	<tr>
+      <td>Error: Pin invalid</td>
+      <td>Incorrect pin value</td>
+    </tr>
+	<tr>
+      <td>Error: Token locked</td>
+      <td>Certificate credentials locked</td>
+    </tr>
+	<tr>
+      <td>Error: Invalid Otp</td>
+      <td>Wrong or expired OTP code</td>
+    </tr>
+	<tr>
+      <td>Exception: Invalid Environment. Supported values are: []</td>
+      <td>Incorrect environment value</td>
+    </tr>
+	<tr>
+      <td>Exception: Remote Signature Failed: 401 Unauthorized</td>
+      <td>Wrong billing credentials</td>
+    </tr>
+	<tr>
+      <td>Exception: Invalid TSA alias</td>
+      <td>Incorrect timestamping alias</td>
+    </tr>
+	<tr>
+      <td>Exception: Invalid Image alias</td>
+      <td>Incorrect image alias</td>
+    </tr>
+	<tr>
+      <td>Exception: Remote Signature Failed: 400 Bad Request</td>
+      <td>Insufficient credits</td>
+    </tr>
+	<tr>
+      <td>Exception: Need tsa_bookmark for ltv signature </td>
+      <td>Performing LTV with timestamping disabled</td>
+    </tr>
+	<tr>
+      <td>Exception: UnknownIssuer</td>
+      <td>Certificate of any hierarchy missing</td>
+    </tr>
+	<tr>
+      <td>Exception: Time Stamping Failed: 400 Bad Request</td>
+      <td>Non existent timestamping</td>
+    </tr>
+  </tbody>
+</table>
 
 <div id="APIReference" style="padding-top: 60px;"><h1>API Reference<h1></div>
 
