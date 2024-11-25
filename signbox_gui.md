@@ -37,10 +37,9 @@ Want to configure your own test-mode Optimizer? Find instructions in the <a href
 
 # Configuration
 
-SignBox Optimizer can be supplied as a **Docker** or as a **Virtual Machine** image.
+SignBox Optimizer can be supplied as a **Docker**.
 See the configuration description in:<br>
 <a href="#section/Configuration/SignBox-Optimizer-on-Docker"> SignBox Optimizer on Docker</a><br>
-<a href="#section/Configuration/SignBox-Optimizer-on-Virtual-Machine-(OVA)"> SignBox Optimizer on Virtual Machine</a>
 
 
 
@@ -424,15 +423,12 @@ Followed by
 
 # Logs
 
-Service logs files are stored in a local folder in OVA or stored inside the containers in Docker.
+Service logs are stored inside the containers.
 
 To read logs in Docker version of SignBox Optimizer run this command:
 
 	docker-compose logs
 
-To read logs in OVA version of SignBox Optimizer you can find logfile in this path:
-
-**/var/log/de**
 
 
 
