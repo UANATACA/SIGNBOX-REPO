@@ -144,45 +144,7 @@ Check service status:
 All services must be UP.
 
 </br>
-
-
-## SignBox Optimizer on Virtual Machine (OVA)
-<div style="text-align: justify">
-The Virtual Machine is supplied in an OVA file. SignBox Optimizer image is compatible with common virtual environments like VMWare, AWS, Azure or VirtualBox.
-</div>
-</br>
-
-> STEP 1: Import SignBox Optimizer (VM) in the virtual environment.
-
-<div style="text-align: justify">
-Adjust the system requirements for optimal usage considering host terminal resources described in <a href="#section/Configuration/Hardware-requirements"> hardware requirements</a>.
-</div>
-
-</br>
-
-> STEP 2: Network configuration.
-
-The network settings are configured on the file `ifcfg-ens160`, which can be found in the path **/etc/sysconfig/network-scripts**. Edit the file and insert the correct IP address, network mask, gateway and DNS for your network.
-
-Example:
-
-![img](https://github.com/UANATACA/SIGNBOX-REPO/blob/main/img/signbox-docker5.png?raw=true)
-
-Restart network services with command:
-
-	service network restart
-
-> **Proxy network** settings
-
-The Proxy settings are configured in the file `settings.ini` which can be found in path **/opt/bit4id/de/etc**. Edit the file and insert proxy address, port and credentials if are needed. 
-
-It is possible to include url exceptions for services that don't use proxy network. Exceptions must be included in regular expression format.
-
-Example:
-
-![img](https://raw.githubusercontent.com/UANATACA/SIGNBOX-REPO/c4c4b74b4c4183cee57dc9be3a9eaf159ee2f4a1/img/signbox-ova1.png)
-</br>
-
+  
 
 ## Signature Image Configuration
 
@@ -459,24 +421,6 @@ Followed by
 
 	docker compose up -d
 
-### *OVA*
-
-
-> STEP 1: Load certificates in the optimizer
-
-Load the PEM files in the following path:
-
-	/opt/bit4id/de/etc/trusted_roots/certs
-
->STEP 2: Restart the service
-
-After all the desired certificates have been loaded into the optimizer, we must fully restart the services with
-
-	systemctl stop bit4-de.api.service bit4-de.cryptosvc.service nginx
-
-Followed by
-
-	systemctl start bit4-de.api.service bit4-de.cryptosvc.service nginx
 
 # Logs
 
